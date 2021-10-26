@@ -1,5 +1,6 @@
 package com.battleshipics4u.ics4u_cpt_battleship;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +17,14 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
         // Testing this
+
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+
+            }
+        }.start();
+        //show the stage
     }
 
     public static void main(String[] args) {
