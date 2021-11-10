@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ICS4U CPT Battleship" target="17" />
+      <module name="ICS4U CPT Battleship" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
