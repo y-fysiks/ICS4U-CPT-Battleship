@@ -13,7 +13,7 @@ public class StartGameButton {
 
     @FXML
     public void onHelloButtonClick(ActionEvent actionEvent) {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        //start the game
 
     }
 }
