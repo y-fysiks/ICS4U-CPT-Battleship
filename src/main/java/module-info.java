@@ -1,4 +1,5 @@
 module com.battleshipics4u.ics4u_cpt_battleship {
+    requires transitive javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
 
