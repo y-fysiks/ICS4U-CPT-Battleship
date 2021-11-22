@@ -6,18 +6,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+//custom package imports
+import com.battleshipics4u.ics4u_cpt_battleship.menus.*;
+
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("Battleship");
-
+        
         stage.setScene(scene);
         stage.show();
-        // Testing this
+
+        Menu start = new StartMenu();
+        Menu instructions = new InstructionsMenu();
+        Menu startMenu = new StartMenu();
+        Menu endMenu = new EndMenu();
+        Menu pauseMenu = new PauseMenu();
+
 
         new AnimationTimer() {
             @Override
