@@ -20,9 +20,6 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.show();
 
-        
-
-
         new AnimationTimer() {
             @Override
             public void handle(long now) {
