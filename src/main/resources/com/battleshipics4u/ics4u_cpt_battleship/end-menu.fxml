@@ -6,10 +6,9 @@
 
 <?import javafx.scene.control.Button?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-        fx:controller="com.battleshipics4u.ics4u_cpt_battleship.menuControllers.StartMenu">
+    fx:controller="com.battleshipics4u.ics4u_cpt_battleship.menuController.EndMenu">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Button text="Start" onAction="#onStartButtonClick"/>
 </VBox>
