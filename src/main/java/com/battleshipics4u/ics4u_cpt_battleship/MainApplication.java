@@ -8,16 +8,23 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.battleshipics4u.ics4u_cpt_battleship.menuControllers.*;
+//import custom classes
+import com.battleshipics4u.ics4u_cpt_battleship.menuClasses.*;
 
 public class MainApplication extends Application {
+    private static Stage stage;
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("start-menu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+    public void start(Stage primaryStage) throws IOException {
+        MainApplication.stage = primaryStage;
         stage.setTitle("Battleship");
-        
-        stage.setScene(scene);
+
+        //create all the menuClasses
+        Start start = new Start();
+
+
+        //show the start menu
+        start.showMenu();
         stage.show();
 
         new AnimationTimer() {
@@ -27,6 +34,10 @@ public class MainApplication extends Application {
             }
         }.start();
         //show the stage
+    }
+
+    public static void setScene(Scene scene) {
+        stage.setScene(scene);
     }
 
     public static void main(String[] args) {
