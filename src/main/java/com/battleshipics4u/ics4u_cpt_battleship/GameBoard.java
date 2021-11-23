@@ -2,8 +2,6 @@ package com.battleshipics4u.ics4u_cpt_battleship;
 
 import java.util.Random;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 
 public class GameBoard {
     Random random = new Random();
