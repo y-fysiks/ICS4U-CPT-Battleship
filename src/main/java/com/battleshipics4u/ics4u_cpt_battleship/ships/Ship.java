@@ -80,5 +80,4 @@ public class Ship {
     public boolean checkSunk() {
         return countHits == shipLength;
     }
-
 }
