@@ -6,6 +6,6 @@ import java.util.Random;
 public class GameBoard {
     Random random = new Random();
 
-    public static final int DEFAULT_ROWS = 10;
-    public static final int DEFAULT_COLS = 10;
+    public static final int DEFAULT_ROWS = 8;
+    public static final int DEFAULT_COLS = 8;
 }
