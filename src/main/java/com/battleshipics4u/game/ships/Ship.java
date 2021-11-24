@@ -1,6 +1,4 @@
-package com.battleshipics4u.ics4u_cpt_battleship.ships;
-
-import com.battleshipics4u.ics4u_cpt_battleship.GameBoard;
+package com.battleshipics4u.game.ships;
 
 /**
  * Daniel Bajenaru

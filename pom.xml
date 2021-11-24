@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.battleshipics4u.ics4u_cpt_battleship/com.battleshipics4u.ics4u_cpt_battleship.HelloApplication
+                                com.battleshipics4u.ics4u_cpt_battleship/com.battleshipics4u.game.HelloApplication
                             </mainClass>
                         </configuration>
                     </execution>

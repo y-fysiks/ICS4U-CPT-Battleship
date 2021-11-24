@@ -1,4 +1,4 @@
-package com.battleshipics4u.ics4u_cpt_battleship.menuClasses;
+package com.battleshipics4u.game.menuClasses;
 
 import java.io.IOException;
 

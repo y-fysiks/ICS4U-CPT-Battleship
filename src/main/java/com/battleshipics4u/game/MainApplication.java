@@ -1,4 +1,4 @@
-package com.battleshipics4u.ics4u_cpt_battleship;
+package com.battleshipics4u.game;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 //import custom classes
-import com.battleshipics4u.ics4u_cpt_battleship.menuClasses.*;
+import com.battleshipics4u.game.menuClasses.*;
 
 public class MainApplication extends Application {
     private static Stage stage;

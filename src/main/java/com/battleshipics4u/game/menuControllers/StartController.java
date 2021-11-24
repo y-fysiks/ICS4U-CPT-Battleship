@@ -1,4 +1,4 @@
-package com.battleshipics4u.ics4u_cpt_battleship.menuControllers;
+package com.battleshipics4u.game.menuControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

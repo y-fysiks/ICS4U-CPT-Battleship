@@ -1,7 +1,7 @@
-package com.battleshipics4u.ics4u_cpt_battleship;
+package com.battleshipics4u.game;
 
 import java.util.Random;
-import com.battleshipics4u.ics4u_cpt_battleship.ships.*;
+import com.battleshipics4u.game.ships.*;
 import java.util.*;
 
 

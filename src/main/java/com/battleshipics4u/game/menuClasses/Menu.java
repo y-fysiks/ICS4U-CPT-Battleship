@@ -1,12 +1,11 @@
-package com.battleshipics4u.ics4u_cpt_battleship.menuClasses;
+package com.battleshipics4u.game.menuClasses;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
 import java.io.*;
-import java.util.*;
 
-import com.battleshipics4u.ics4u_cpt_battleship.MainApplication; // import MainApplication so we can access the MainApplication resources
+import com.battleshipics4u.game.MainApplication; // import MainApplication so we can access the MainApplication resources
 
 public abstract class Menu {
     private Scene sc; // The scene that the menu will be displayed on. Can be switched to another scene to switch between menus. 
