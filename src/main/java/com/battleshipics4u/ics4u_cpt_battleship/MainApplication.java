@@ -2,7 +2,6 @@ package com.battleshipics4u.ics4u_cpt_battleship;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -20,7 +19,7 @@ public class MainApplication extends Application {
         stage.setTitle("Battleship");
 
         //create all the menuClasses
-        Start start = new Start();
+        StartMenu start = new StartMenu();
 
 
         //show the start menu

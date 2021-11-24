@@ -2,9 +2,9 @@ package com.battleshipics4u.ics4u_cpt_battleship.menuClasses;
 
 import java.io.IOException;
 
-public class Start extends Menu {
+public class StartMenu extends Menu {
     
-    public Start() throws IOException {
+    public StartMenu() throws IOException {
         super("start-menu.fxml");
     }
 }

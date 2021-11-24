@@ -1,5 +1,7 @@
 package com.battleshipics4u.ics4u_cpt_battleship.ships;
 
+import com.battleshipics4u.ics4u_cpt_battleship.GameBoard;
+
 /**
  * Daniel Bajenaru
  * Class for ships
@@ -59,7 +61,7 @@ public class Ship {
      * @return true if the ship is hit
      */
     public boolean checkHit(int shotRow, int shotColumn) {
-        if (shipOrientation) {
+                if (shipOrientation) {
             if (shotColumn == shipColumn && shotRow >= shipRow && shotRow <= (shipRow + shipLength - 1)) { //checks if the shot is within the length of the ship for vertical orientation
                 countHits++;
                 return true;
