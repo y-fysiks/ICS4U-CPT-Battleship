@@ -12,4 +12,5 @@
     </padding>
 
     <Button text="Start" onAction="#onStartButtonClick"/>
+    <Button text="Instructions" onAction="#onInsButtonClick"/>
 </VBox>
