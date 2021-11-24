@@ -12,6 +12,8 @@ import com.battleshipics4u.game.menuClasses.*;
 
 public class MainApplication extends Application {
     private static Stage stage;
+    public static StartMenu start;
+    public static InstructionMenu help;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -19,8 +21,8 @@ public class MainApplication extends Application {
         stage.setTitle("Battleship");
 
         //create all the menuClasses
-        StartMenu start = new StartMenu();
-
+        start = new StartMenu();
+        help = new InstructionMenu();
 
         //show the start menu
         start.showMenu();

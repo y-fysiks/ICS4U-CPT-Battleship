@@ -3,7 +3,9 @@ package com.battleshipics4u.game;
 import com.battleshipics4u.game.ships.*;
 import java.util.*;
 
-
+/**
+ * Daniel Bajenaru
+ */
 public class GameBoard {
     Random random = new Random();
 
