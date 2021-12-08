@@ -16,4 +16,8 @@ public class StartController {
     public void onInsButtonClick(ActionEvent actionEvent) {
         MainApplication.help.showMenu();
     }
+
+    public void onExitButtonClick(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }

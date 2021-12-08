@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Yubo Wang
- * Stores the current internal state of the game, generates positions for the
+ * Stores the current internal state of the game, generates positions for the battleships
  */
 public class GameStates {
     GameBoard player, enemy;
@@ -15,8 +15,7 @@ public class GameStates {
         enemy = new GameBoard();
     }
 
-    public void getTurn() {
-
-
+    public boolean getTurn() {
+        return playerTurn;
     }
 }

@@ -24,6 +24,7 @@ public class MainApplication extends Application {
         start = new StartMenu();
         help = new InstructionMenu();
 
+
         //show the start menu
         start.showMenu();
         stage.show();
