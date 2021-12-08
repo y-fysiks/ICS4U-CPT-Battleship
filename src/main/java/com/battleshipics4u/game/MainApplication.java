@@ -24,7 +24,6 @@ public class MainApplication extends Application {
         start = new StartMenu();
         help = new InstructionMenu();
 
-
         //show the start menu
         start.showMenu();
         stage.show();
@@ -43,6 +42,11 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
+        GameStates mainGame = new GameStates();
+        System.out.println("testing---");
+        mainGame.generateEnemyShipPlacements();
+        mainGame.printEnemyShipLocations();
+
         launch();
     }
 }

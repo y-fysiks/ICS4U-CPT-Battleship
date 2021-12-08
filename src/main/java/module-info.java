@@ -8,4 +8,5 @@ module com.battleshipics4u.ics4u_cpt_battleship {
     exports com.battleshipics4u.game;
     exports com.battleshipics4u.game.menuControllers;
     exports com.battleshipics4u.game.menuClasses;
+    exports com.battleshipics4u.game.ships;
 }

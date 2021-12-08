@@ -13,11 +13,17 @@ public class GameBoard {
     public static final int DEFAULT_COLS = 8;
 
     public int[][] gameBoard = new int[DEFAULT_ROWS][DEFAULT_COLS];
-    private ArrayList<Ship> shipList = new ArrayList<>();
+    public ArrayList<Ship> shipList = new ArrayList<>();
 
     private Ship carrier, battleship, destroyer, cruiser, submarine;
 
     public GameBoard() {
+        Ship.getShipIdx.put("Carrier", 0);
+        Ship.getShipIdx.put("Battleship", 1);
+        Ship.getShipIdx.put("Destroyer", 2);
+        Ship.getShipIdx.put("Submarine", 3);
+        Ship.getShipIdx.put("Cruiser", 4);
+
         carrier = new Ship("Carrier", 5);
         battleship = new Ship("Battleship", 4);
         destroyer = new Ship("Destroyer", 3);
@@ -30,4 +36,5 @@ public class GameBoard {
         shipList.add(submarine);
         shipList.add(cruiser);
     }
+
 }
