@@ -1,14 +1,22 @@
 package com.battleshipics4u.game.ships;
 
 /**
+ * Enumeration for ship orientation
+ * Allows to easily recognize the ship orientation
+ */
+enum Orientation {
+    Horizontal, Vertical
+}
+
+/**
  * Daniel Bajenaru
  * Class for ships
  * Methods for checking and settings ship states
  */
 public class Ship {
-    private String shipName;
-    private int shipLength;
-    private boolean shipOrientation = false; // 0 = horizontal 1 = vertical
+    private final String shipName;
+    private final int shipLength;
+    private Orientation shipOrientation = Orientation.Horizontal;
     private int shipRow, shipColumn; //left most and top most square of ship
     private boolean isSunk = false;
     private int countHits = 0;
@@ -59,7 +67,7 @@ public class Ship {
      * @return true if the ship is hit
      */
     public boolean checkHit(int shotRow, int shotColumn) {
-                if (shipOrientation) {
+        if (shipOrientation == Orientation.Vertical) {
             if (shotColumn == shipColumn && shotRow >= shipRow && shotRow <= (shipRow + shipLength - 1)) { //checks if the shot is within the length of the ship for vertical orientation
                 countHits++;
                 return true;
@@ -78,6 +86,10 @@ public class Ship {
      * @return true if the ship is sunk
      */
     public boolean checkSunk() {
-        return countHits == shipLength;
+        if (countHits == shipLength) {
+            isSunk = true;
+            return true;
+        }
+        return false;
     }
 }
