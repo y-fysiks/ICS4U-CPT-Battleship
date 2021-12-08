@@ -7,4 +7,5 @@ module com.battleshipics4u.ics4u_cpt_battleship {
     opens com.battleshipics4u.game to javafx.fxml;
     exports com.battleshipics4u.game;
     exports com.battleshipics4u.game.menuControllers;
+    exports com.battleshipics4u.game.menuClasses;
 }
