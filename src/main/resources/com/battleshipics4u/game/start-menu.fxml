@@ -14,7 +14,7 @@
       <font>
          <Font name="Agency FB Bold" size="36.0" />
       </font></Button>
-    <Button onAction="#onInsButtonClick" prefHeight="51.0" prefWidth="200.0" text="Instructions">
+    <Button onAction="#onHelpButtonClick" prefHeight="51.0" prefWidth="200.0" text="Instructions">
       <font>
          <Font name="Agency FB Bold" size="28.0" />
       </font></Button>

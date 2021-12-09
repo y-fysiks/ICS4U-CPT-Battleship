@@ -46,10 +46,37 @@ public class GameStates {
         }
     }
 
-    public void placeShip(boolean isPlayer, int shipIdx, int row, int col, boolean dir) {
-
+    public boolean placeShip(int shipIdx, int row, int col, Orientation dir) {
+        Ship ship = player.shipList.get(shipIdx);
+        if (checkShipOverlaps(player, row, col, ship.getShipLength(), dir)) {
+            return false;
+        }
+        ship.setPosition(row, col, dir);
+        return true;
     }
 
+    private boolean checkShipOverlaps(GameBoard gb, int row, int col, int shipLength, Orientation orientation) {
+        int endRow = row, endCol = col;
+        if (orientation == Orientation.Horizontal) {
+            endCol += shipLength;
+        } else {
+            endRow += shipLength;
+        }
+        for (Ship s : gb.shipList) {
+            int sRow = s.getPosition(0), sCol = s.getPosition(1);
+            int sEndRow = sRow, sEndCol = sCol;
+            if (s.getOrientation() == Orientation.Horizontal) {
+                sEndCol += shipLength;
+            } else {
+                sEndRow += shipLength;
+            }
+            if (row <= sEndRow && endRow >= sRow && col <= sEndCol && endCol >= sCol) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //------------------------------DEBUGGING METHODS--------------------------------
     /**
      * debugging method, prints the current board
      */
@@ -74,25 +101,5 @@ public class GameStates {
         }
     }
 
-    private boolean checkShipOverlaps(GameBoard gb, int row, int col, int shipLength, Orientation orientation) {
-        int endRow = row, endCol = col;
-        if (orientation == Orientation.Horizontal) {
-            endCol += shipLength;
-        } else {
-            endRow += shipLength;
-        }
-        for (Ship s : gb.shipList) {
-            int sRow = s.getPosition(0), sCol = s.getPosition(1);
-            int sEndRow = sRow, sEndCol = sCol;
-            if (s.getOrientation() == Orientation.Horizontal) {
-                sEndCol += shipLength;
-            } else {
-                sEndRow += shipLength;
-            }
-            if (row <= sEndRow && endRow >= sRow && col <= sEndCol && endCol >= sCol) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }

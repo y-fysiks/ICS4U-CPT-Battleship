@@ -13,7 +13,7 @@ public class StartController {
     }
 
     @FXML
-    public void onInsButtonClick(ActionEvent actionEvent) {
+    public void onHelpButtonClick(ActionEvent actionEvent) {
         MainApplication.help.showMenu();
     }
 
