@@ -16,6 +16,7 @@ public class Ship {
     private int countHits = 0;
 
     public static HashMap<String, Integer> getShipIdx = new HashMap<>();
+    public static HashMap<Integer, String> getShipName = new HashMap<>();
 
     /**
      * Constructor sets ship name and length

@@ -24,6 +24,12 @@ public class GameBoard {
         Ship.getShipIdx.put("Submarine", 3);
         Ship.getShipIdx.put("Cruiser", 4);
 
+        Ship.getShipName.put(0, "Carrier");
+        Ship.getShipName.put(1, "Battleship");
+        Ship.getShipName.put(2, "Destroyer");
+        Ship.getShipName.put(3, "Submarine");
+        Ship.getShipName.put(4, "Cruiser");
+
         carrier = new Ship("Carrier", 5);
         battleship = new Ship("Battleship", 4);
         destroyer = new Ship("Destroyer", 3);

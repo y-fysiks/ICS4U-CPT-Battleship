@@ -48,9 +48,15 @@ public class GameStates {
 
     public boolean placeShip(int shipIdx, int row, int col, Orientation dir) {
         Ship ship = player.shipList.get(shipIdx);
-        if (checkShipOverlaps(player, row, col, ship.getShipLength(), dir)) {
-            return false;
+
+        if (row < 0 || col < 0) return false;
+        if (dir == Orientation.Horizontal) {
+            if (row >= GameBoard.DEFAULT_ROWS || col >= GameBoard.DEFAULT_COLS - ship.getShipLength()) return false;
+        } else {
+            if (row >= GameBoard.DEFAULT_ROWS - ship.getShipLength() || col >= GameBoard.DEFAULT_COLS) return false;
         }
+
+        if (checkShipOverlaps(player, row, col, ship.getShipLength(), dir)) return false;
         ship.setPosition(row, col, dir);
         return true;
     }
