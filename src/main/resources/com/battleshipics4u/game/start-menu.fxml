@@ -9,6 +9,8 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+    
+    
 
     <Button onAction="#onStartButtonClick" prefHeight="68.0" prefWidth="200.0" text="Start">
       <font>
