@@ -4,26 +4,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.battleshipics4u.game.menuControllers.InstructionsController">
-   <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#back" text="Back"/>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.InstructionsController">
+   <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#back" text="Back" />
    <Label alignment="TOP_CENTER" layoutX="531.0" layoutY="45.0" prefHeight="54.0" prefWidth="217.0" text="Instructions">
       <font>
-         <Font size="36.0"/>
+         <Font size="36.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="98.0" layoutY="113.0" prefHeight="48.0" prefWidth="1084.0"
-          text="Main Goal: Sink your opponent's fleet of five ships before they sink yours">
+   <Label alignment="CENTER" layoutX="98.0" layoutY="113.0" prefHeight="48.0" prefWidth="1084.0" text="Main Goal: Sink your opponent's fleet of five ships before they sink yours">
       <font>
-         <Font name="JetBrains Mono Bold" size="24.0"/>
+         <Font name="JetBrains Mono Bold" size="24.0" />
       </font>
    </Label>
-   <Label alignment="TOP_CENTER" layoutX="164.0" layoutY="173.0" prefHeight="473.0" prefWidth="952.0"
-          text="1.  Decide Who Goes First. You and your opponent will alternate turns, calling out one shot per turn to try to hit each others ships&#13;&#13;2. On your turn, pick a target hole on your upright target grid and call out its location by letter and number. Each target hole has a letter-number coordinate that corresponds with the same coordinate on your opponents ocean grid&#13;&#13;3. If you call out a shot location not occupied by a ship on your opponents grid, its a MISS. record your miss by placing a white peg in the corresponding target hole on your target grid so you won't call this shot again&#13;&#13;4. If you call out a shot location that is occcupied by a ship on your opponents grid, your shit HITS! Your opponent tells you which ship you have hit and Record your hit by placing a red peg in the corresponding target hole on your target grid. Your opponents places a red peg in the corresponding hole of the ship you have hit on their grid&#13;&#13;5. Once all the holes in any one ship are filled with red pegs, it has been sunk. The owner of the ship must announce which ship was sunk. Keep track of your opponents ships you sunk by placing a red peg for each ship sunk in one of the five holes at the top of your game unit&#13;&#13;6. If your the first player to sink your opponents entire fleet of 5 ships, you win!"
-          wrapText="true">
+   <Label alignment="TOP_CENTER" layoutX="164.0" layoutY="173.0" prefHeight="473.0" prefWidth="952.0" text="1.  Decide Who Goes First. You and your opponent will alternate turns, calling out one shot per turn to try to hit each others ships&#13;&#13;2. On your turn, pick a target hole on your upright target grid and call out its location by letter and number. Each target hole has a letter-number coordinate that corresponds with the same coordinate on your opponents ocean grid&#13;&#13;3. If you call out a shot location not occupied by a ship on your opponents grid, its a MISS. record your miss by placing a white peg in the corresponding target hole on your target grid so you won't call this shot again&#13;&#13;4. If you call out a shot location that is occcupied by a ship on your opponents grid, your shit HITS! Your opponent tells you which ship you have hit and Record your hit by placing a red peg in the corresponding target hole on your target grid. Your opponents places a red peg in the corresponding hole of the ship you have hit on their grid&#13;&#13;5. Once all the holes in any one ship are filled with red pegs, it has been sunk. The owner of the ship must announce which ship was sunk. Keep track of your opponents ships you sunk by placing a red peg for each ship sunk in one of the five holes at the top of your game unit&#13;&#13;6. If your the first player to sink your opponents entire fleet of 5 ships, you win!" wrapText="true">
       <font>
-         <Font name="Symbol" size="18.0"/>
+         <Font name="Symbol" size="18.0" />
       </font>
    </Label>
 </AnchorPane>

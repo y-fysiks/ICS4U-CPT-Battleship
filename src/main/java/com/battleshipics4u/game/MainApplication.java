@@ -19,6 +19,7 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         MainApplication.stage = primaryStage;
         stage.setTitle("Battleship");
+        stage.setResizable(false);
 
         //create all the menuClasses
         start = new StartMenu();
