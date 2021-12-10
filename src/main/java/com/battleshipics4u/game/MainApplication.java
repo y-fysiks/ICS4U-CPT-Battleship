@@ -1,11 +1,13 @@
 package com.battleshipics4u.game;
 
+import com.battleshipics4u.game.ships.Orientation;
+import com.battleshipics4u.game.ships.Ship;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.util.Scanner;
 
 //import custom classes
 import com.battleshipics4u.game.menuClasses.*;
@@ -22,9 +24,8 @@ public class MainApplication extends Application {
         stage.setResizable(false);
 
         //create all the menuClasses
-        start = new StartMenu();
+        start = new StartMenu(primaryStage);
         help = new InstructionMenu();
-
 
         //show the start menu
         start.showMenu();
@@ -44,6 +45,36 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
+        //debugging purposes, comment this out when you want to see the GUI running
+        //debug();
+
         launch();
+    }
+
+    static void debug() {
+        Scanner in = new Scanner(System.in);
+        GameStates mainGame = new GameStates();
+        System.out.println("testing---");
+        mainGame.generateEnemyShipPlacements();
+        mainGame.printEnemyShipLocations();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
+            System.out.println("Enter row and then column and then the direction (H or V). ");
+            int row = in.nextInt(), col = in.nextInt();
+            String inpOrientation = in.next();
+            Orientation orientation = inpOrientation.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
+            while (!mainGame.placeShip(i, row, col, orientation)) {
+                System.out.println("Invalid. ");
+                System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
+                System.out.println("Enter row and then column and then the direction (H or V). ");
+                row = in.nextInt();
+                col = in.nextInt();
+                inpOrientation = in.next();
+                orientation = inpOrientation.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
+            }
+        }
+
+
+        in.close();
     }
 }

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.battleshipICS4U</groupId>
+    <groupId>com.battleshipics4u</groupId>
     <artifactId>ICS4U_CPT_Battleship</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>ICS4U CPT Battleship</name>
@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.battleshipics4u.ics4u_cpt_battleship/com.battleshipics4u.game.HelloApplication
+                                com.battleshipics4u.ics4u_cpt_battleship/com.battleshipics4u.game.MainApplication
                             </mainClass>
                         </configuration>
                     </execution>

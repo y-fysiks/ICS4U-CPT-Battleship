@@ -9,12 +9,14 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+    
+    
 
     <Button onAction="#onStartButtonClick" prefHeight="68.0" prefWidth="200.0" text="Start">
       <font>
          <Font name="Agency FB Bold" size="36.0" />
       </font></Button>
-    <Button onAction="#onInsButtonClick" prefHeight="51.0" prefWidth="200.0" text="Instructions">
+    <Button onAction="#onHelpButtonClick" prefHeight="51.0" prefWidth="200.0" text="Instructions">
       <font>
          <Font name="Agency FB Bold" size="28.0" />
       </font></Button>
