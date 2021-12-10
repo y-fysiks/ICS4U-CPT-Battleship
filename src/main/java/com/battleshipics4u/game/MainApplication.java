@@ -60,18 +60,20 @@ public class MainApplication extends Application {
             System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
             System.out.println("Enter row and then column and then the direction (H or V). ");
             int row = in.nextInt(), col = in.nextInt();
-            String dir = in.next();
-            Orientation orientation = dir.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
+            String inpOrientation = in.next();
+            Orientation orientation = inpOrientation.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
             while (!mainGame.placeShip(i, row, col, orientation)) {
                 System.out.println("Invalid. ");
-                System.out.println(mainGame.placeShip(i, row, col, orientation));
                 System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
                 System.out.println("Enter row and then column and then the direction (H or V). ");
                 row = in.nextInt();
                 col = in.nextInt();
-                dir = in.next();
-                orientation = dir.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
+                inpOrientation = in.next();
+                orientation = inpOrientation.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
             }
         }
+
+
+        in.close();
     }
 }

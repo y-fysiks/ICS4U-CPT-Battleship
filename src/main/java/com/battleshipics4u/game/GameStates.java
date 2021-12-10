@@ -2,7 +2,6 @@ package com.battleshipics4u.game;
 import com.battleshipics4u.game.ships.Orientation;
 import com.battleshipics4u.game.ships.Ship;
 
-import java.io.*;
 import java.util.*;
 
 /**
