@@ -44,29 +44,34 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        // Scanner in = new Scanner(System.in);
-        // GameStates mainGame = new GameStates();
-        // System.out.println("testing---");
-        // mainGame.generateEnemyShipPlacements();
-        // mainGame.printEnemyShipLocations();
-        // for (int i = 0; i < 5; i++) {
-        //     System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
-        //     System.out.println("Enter row and then column and then the direction (H or V). ");
-        //     int row = in.nextInt(), col = in.nextInt();
-        //     String dir = in.next();
-        //     Orientation orientation = dir.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
-        //     while (!mainGame.placeShip(i, row, col, orientation)) {
-        //         System.out.println("Invalid. ");
-        //         System.out.println(mainGame.placeShip(i, row, col, orientation));
-        //         System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
-        //         System.out.println("Enter row and then column and then the direction (H or V). ");
-        //         row = in.nextInt();
-        //         col = in.nextInt();
-        //         dir = in.next();
-        //         orientation = dir.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
-        //     }
-        // }
+        //debugging purposes, comment this out when you want to see the GUI running
+        debug();
 
         launch();
+    }
+
+    static void debug() {
+        Scanner in = new Scanner(System.in);
+        GameStates mainGame = new GameStates();
+        System.out.println("testing---");
+        mainGame.generateEnemyShipPlacements();
+        mainGame.printEnemyShipLocations();
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
+            System.out.println("Enter row and then column and then the direction (H or V). ");
+            int row = in.nextInt(), col = in.nextInt();
+            String dir = in.next();
+            Orientation orientation = dir.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
+            while (!mainGame.placeShip(i, row, col, orientation)) {
+                System.out.println("Invalid. ");
+                System.out.println(mainGame.placeShip(i, row, col, orientation));
+                System.out.println("Please enter the location of the " + Ship.getShipName.get(i));
+                System.out.println("Enter row and then column and then the direction (H or V). ");
+                row = in.nextInt();
+                col = in.nextInt();
+                dir = in.next();
+                orientation = dir.equals("H") ? Orientation.Horizontal : Orientation.Vertical;
+            }
+        }
     }
 }
