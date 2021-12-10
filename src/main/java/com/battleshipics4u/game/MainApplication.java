@@ -16,6 +16,7 @@ public class MainApplication extends Application {
     private static Stage stage;
     public static StartMenu start;
     public static InstructionMenu help;
+    public static PlayerBoardSet playerBoard;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -26,6 +27,7 @@ public class MainApplication extends Application {
         //create all the menuClasses
         start = new StartMenu(primaryStage);
         help = new InstructionMenu();
+        playerBoard = new PlayerBoardSet();
 
         //show the start menu
         start.showMenu();

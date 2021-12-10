@@ -8,8 +8,7 @@ public class StartController {
     
     @FXML
     public void onStartButtonClick(ActionEvent actionEvent) {
-        //start the game
-
+        MainApplication.playerBoard.showMenu();
     }
 
     @FXML

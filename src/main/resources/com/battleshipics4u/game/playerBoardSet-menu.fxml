@@ -5,7 +5,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0"
             prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.battleshipics4u.game.menuClasses.PlayerBoardSet">
+            fx:controller="com.battleshipics4u.game.menuControllers.PlayerBoardSetController">
   <padding>
     <Insets bottom="60.0" left="60.0" right="60.0" top="60.0"/>
   </padding>
