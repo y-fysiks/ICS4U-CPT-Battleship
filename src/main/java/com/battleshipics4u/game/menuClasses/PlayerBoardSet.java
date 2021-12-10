@@ -1,11 +1,20 @@
 package com.battleshipics4u.game.menuClasses;
 
 import java.io.IOException;
-import javafx.scene.shape.Rectangle;
+
+import com.battleshipics4u.game.MainApplication;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import com.battleshipics4u.game.menuControllers.PlayerBoardSetController;
 
 public class PlayerBoardSet extends Menu{
-    public final Rectangle[][] board = new Rectangle[8][8];
-    private final double squareLength = 30;
+    Image carrier = new Image(String.valueOf(MainApplication.class.getResource("carrier.png")));
+//    Image battleship = new Image("battleship.png");
+//    Image destroyer = new Image("destroyer.png");
+//    Image submarine = new Image("submarine.png");
+//    Image cruiser = new Image("cruiser.png");
+
+
 
     /**
      * The constructor for the menu abstract class. This will be called by the subclasses to set up the menu.
@@ -14,6 +23,7 @@ public class PlayerBoardSet extends Menu{
      */
     public PlayerBoardSet() throws IOException {
         super("playerBoardSet-menu.fxml");
+        //PlayerBoardSetController.carrierImgView = new ImageView(carrier);
     }
 
 //    private void addSquares() {
