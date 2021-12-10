@@ -24,7 +24,7 @@ public class MainApplication extends Application {
 
         //create all the menuClasses
         start = new StartMenu(primaryStage);
-        //help = new InstructionMenu();
+        help = new InstructionMenu();
 
         //show the start menu
         start.showMenu();
@@ -45,7 +45,7 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
         //debugging purposes, comment this out when you want to see the GUI running
-        debug();
+        //debug();
 
         launch();
     }

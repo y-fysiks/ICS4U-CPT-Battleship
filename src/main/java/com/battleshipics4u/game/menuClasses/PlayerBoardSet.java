@@ -16,13 +16,13 @@ public class PlayerBoardSet extends Menu{
         super("playerBoardSet-menu.fxml");
     }
 
-    private void addSquares() {
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Rectangle square = new Rectangle (squareLength, squareLength);
-
-            }
-        }
-    }
+//    private void addSquares() {
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                Rectangle square = new Rectangle (squareLength, squareLength);
+//
+//            }
+//        }
+//    }
 
 }
