@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.PlayerBoardSetController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#move" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.PlayerBoardSetController">
   <padding>
     <Insets bottom="60.0" left="60.0" right="60.0" top="60.0" />
   </padding>
@@ -29,20 +29,20 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
-      <children>
-         <ImageView fx:id="carrierImgView" fitHeight="375.0" fitWidth="75.0" pickOnBounds="true" GridPane.rowIndex="2">
-            <image>
-               <Image url="@carrier.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="carrierImgView1" fitHeight="300.0" fitWidth="75.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
-            <image>
-               <Image url="@carrier.png" />
-            </image>
-            <GridPane.margin>
-               <Insets bottom="75.0" />
-            </GridPane.margin>
-         </ImageView>
-      </children>
   </GridPane>
+  <ImageView fx:id="carrierImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="50.0" y="50.0">
+    <Image url="@carrier.png" />
+  </ImageView>
+  <ImageView fx:id="battleshipImgView" fitHeight="265.0" fitWidth="55.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="150.0" y="50.0">
+    <Image url="@battleship.png" />
+  </ImageView>
+  <ImageView fx:id="destroyerImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="50.0" y="350.0">
+    <Image url="@destroyer.png" />
+  </ImageView>
+  <ImageView fx:id="cruiserImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="250.0" y="50.0">
+    <Image url="@cruiser.png" />
+  </ImageView>
+  <ImageView fx:id="submarineImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="150.0" y="350.0">
+    <Image url="@submarine.png" />
+  </ImageView>
 </AnchorPane>
