@@ -11,9 +11,28 @@ public class PlayerBoardSetController {
     public ImageView cruiserImgView;
     public ImageView submarineImgView;
     boolean moveCarrier = false;
+    boolean moveBattleship = false;
+    boolean moveDestroyer = false;
+    boolean moveCruiser = false;
+    boolean moveSub = false;
+
 
     public void mouseClickedCarrier(MouseEvent mouseEvent) {
         moveCarrier = !moveCarrier;
+    }
+
+    public void mouseClickedBattleship(MouseEvent mouseEvent) {
+
+    }
+
+    public void mouseClickedDestroyer(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickedCruiser(MouseEvent mouseEvent) {
+    }
+
+    public void mouseClickedSub(MouseEvent mouseEvent) {
+
     }
 
     public void move(MouseEvent mouseEvent) {
