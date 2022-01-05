@@ -5,20 +5,38 @@ import javafx.scene.input.MouseEvent;
 
 public class PlayerBoardSetController {
 
+    public enum ShipNames {
+        Carrier, Battleship, Destroyer, Cruiser, Submarine
+    }
+
     public ImageView carrierImgView;
     public ImageView battleshipImgView;
     public ImageView destroyerImgView;
     public ImageView cruiserImgView;
     public ImageView submarineImgView;
-    boolean moveCarrier = false;
+
+    public void selectShip(MouseEvent mouseEvent) {
+        ShipNames selectedShip = ShipNames.Carrier;
     boolean moveBattleship = false;
     boolean moveDestroyer = false;
     boolean moveCruiser = false;
     boolean moveSub = false;
 
 
-    public void mouseClickedCarrier(MouseEvent mouseEvent) {
-        moveCarrier = !moveCarrier;
+        switch (selectedShip) {
+            case Carrier:
+                break;
+            case Battleship:
+                break;
+            case Destroyer:
+                break;
+            case Cruiser:
+                break;
+            case Submarine:
+                break;
+
+        }
+
     }
 
     public void mouseClickedBattleship(MouseEvent mouseEvent) {

@@ -33,16 +33,16 @@
   <ImageView fx:id="carrierImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="50.0" y="50.0">
     <Image url="@carrier.png" />
   </ImageView>
-  <ImageView fx:id="battleshipImgView" fitHeight="265.0" fitWidth="55.0" focusTraversable="true" onMouseClicked="#mouseClickedBattleship" pickOnBounds="true" x="150.0" y="50.0">
+  <ImageView fx:id="battleshipImgView" fitHeight="265.0" fitWidth="55.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="150.0" y="50.0">
     <Image url="@battleship.png" />
   </ImageView>
-  <ImageView fx:id="destroyerImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedDestroyer" pickOnBounds="true" x="50.0" y="350.0">
+  <ImageView fx:id="destroyerImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="50.0" y="350.0">
     <Image url="@destroyer.png" />
   </ImageView>
-  <ImageView fx:id="cruiserImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCruiser" pickOnBounds="true" x="250.0" y="50.0">
+  <ImageView fx:id="cruiserImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="250.0" y="50.0">
     <Image url="@cruiser.png" />
   </ImageView>
-  <ImageView fx:id="submarineImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedSub" pickOnBounds="true" x="150.0" y="350.0">
+  <ImageView fx:id="submarineImgView" fitHeight="260.0" fitWidth="73.0" focusTraversable="true" onMouseClicked="#mouseClickedCarrier" pickOnBounds="true" x="150.0" y="350.0">
     <Image url="@submarine.png" />
   </ImageView>
 </AnchorPane>
