@@ -15,28 +15,14 @@ public class PlayerBoardSetController {
     public ImageView cruiserImgView;
     public ImageView submarineImgView;
 
-    public void selectShip(MouseEvent mouseEvent) {
-        ShipNames selectedShip = ShipNames.Carrier;
+    boolean moveCarrier = false;
     boolean moveBattleship = false;
     boolean moveDestroyer = false;
     boolean moveCruiser = false;
     boolean moveSub = false;
 
-
-        switch (selectedShip) {
-            case Carrier:
-                break;
-            case Battleship:
-                break;
-            case Destroyer:
-                break;
-            case Cruiser:
-                break;
-            case Submarine:
-                break;
-
-        }
-
+    public void mouseClickedCarrier(MouseEvent mouseEvent) {
+        moveCarrier = !moveCarrier;
     }
 
     public void mouseClickedBattleship(MouseEvent mouseEvent) {
