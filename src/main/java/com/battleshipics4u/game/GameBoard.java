@@ -11,6 +11,7 @@ public class GameBoard {
 
     public static final int DEFAULT_ROWS = 8;
     public static final int DEFAULT_COLS = 8;
+    public List<Shot> injuredShip = new ArrayList<Shot>();
 
     public int[][] gridStates = new int[DEFAULT_ROWS][DEFAULT_COLS];
     //0 means not fired upon, 1 means hit, 2 means miss
