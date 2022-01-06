@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -20,14 +21,23 @@
     <Button onAction="#onStartButtonClick" prefHeight="68.0" prefWidth="200.0" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Start" textFill="#00ff2f">
       <font>
          <Font name="Agency FB Bold" size="36.0" />
-      </font></Button>
+      </font>
+      <effect>
+         <Glow level="0.99" />
+      </effect></Button>
     <Button onAction="#onHelpButtonClick" prefHeight="51.0" prefWidth="200.0" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Instructions" textFill="#00ff1e">
       <font>
          <Font name="Agency FB Bold" size="28.0" />
-      </font></Button>
+      </font>
+      <effect>
+         <Glow level="1.0" />
+      </effect></Button>
    <Button layoutX="550.0" layoutY="387.0" onAction="#onExitButtonClick" prefHeight="45.0" prefWidth="96.0" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Exit" textFill="#04ff00">
       <font>
          <Font name="Agency FB Bold" size="24.0" />
       </font>
+      <effect>
+         <Glow level="1.0" />
+      </effect>
    </Button>
 </VBox>
