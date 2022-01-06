@@ -11,6 +11,7 @@ public class GameBoard {
 
     public static final int DEFAULT_ROWS = 8;
     public static final int DEFAULT_COLS = 8;
+    public List<Shot> injuredShip = new ArrayList<Shot>();
 
     public int[][] gameBoard = new int[DEFAULT_ROWS][DEFAULT_COLS];
     public ArrayList<Ship> shipList = new ArrayList<>();

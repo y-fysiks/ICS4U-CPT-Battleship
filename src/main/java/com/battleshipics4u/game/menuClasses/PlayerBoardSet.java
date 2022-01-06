@@ -5,7 +5,7 @@ import java.io.IOException;
 import com.battleshipics4u.game.MainApplication;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import com.battleshipics4u.game.menuControllers.PlayerBoardSetController;
+//import com.battleshipics4u.game.menuControllers.PlayerBoardSetController;
 
 public class PlayerBoardSet extends Menu{
     Image carrier = new Image(String.valueOf(MainApplication.class.getResource("carrier.png")));
