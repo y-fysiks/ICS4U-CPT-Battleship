@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class EnemyTurns {
 	Random rand = new Random(); // sets random num generator
-	private List<Shot> shots = new ArrayList<Shot>();
+	private List<Shot> shots = new ArrayList<>();
 
 	private boolean previouslyShot(int x, int y) {
 		for (Shot shot : shots) {
@@ -24,9 +24,9 @@ public class EnemyTurns {
 			int x = 0;
 			int y = 0;
 			if (gameBoard.injuredShip == null || gameBoard.injuredShip.size() == 0) {
-				x = rand.nextInt(GameBoard.DEFAULT_COLS) + 1; // generates a random int from 1-8 in order to chose
+				x = rand.nextInt(GameBoard.DEFAULT_COLS) + 1; // generates a random int from 1-8 in order to choose
 																// position of shot
-				y = rand.nextInt(GameBoard.DEFAULT_ROWS) + 1; // generates a random int from 1-8 in order to chose
+				y = rand.nextInt(GameBoard.DEFAULT_ROWS) + 1; // generates a random int from 1-8 in order to choose
 																// position
 			} else {
 				if (gameBoard.injuredShip.size() == 1) {
@@ -66,8 +66,8 @@ public class EnemyTurns {
 					int direction = rand.nextInt(2);
 					if(shot1.getX() == shot2.getX()) {
 						x = shot1.getX();
-						int yMin = shot1.getY() < shot2.getY()? shot1.getY() : shot2.getY();
-						int yMax = shot1.getY() > shot2.getY()? shot1.getY() : shot2.getY();
+						int yMin = Math.min(shot1.getY(), shot2.getY());
+						int yMax = Math.max(shot1.getY(), shot2.getY());
 						if(direction == 0) {
 							y = yMin-1;
 							if(y<1) {
@@ -83,8 +83,8 @@ public class EnemyTurns {
 					}
 					if(shot1.getY() == shot2.getY()) {
 						y = shot1.getY();
-						int xMin = shot1.getX() < shot2.getX()? shot1.getX() : shot2.getX();
-						int xMax = shot1.getX() > shot2.getX()? shot1.getX() : shot2.getX();
+						int xMin = Math.min(shot1.getX(), shot2.getX());
+						int xMax = Math.max(shot1.getX(), shot2.getX());
 						if(direction == 0) {
 							x = xMin-1;
 							if(x<1) {
