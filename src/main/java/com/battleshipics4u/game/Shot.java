@@ -1,5 +1,8 @@
 package com.battleshipics4u.game;
 
+/* Daniel Gordon */
+
+//used to get/set x and y of a shot
 public class Shot {
 	private int x;
 	private int y;
