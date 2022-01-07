@@ -123,7 +123,6 @@ public class EnemyTurns {
 		gameBoard.injuredShip = injuredShip;
 		Shot shot = enemyTurns.generateNextTurn(gameBoard);
 		System.out.println("Shot = " + shot.getX() + " / " + shot.getY());
-
 	}
 	*/
 }

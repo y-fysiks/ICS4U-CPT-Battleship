@@ -1,9 +1,15 @@
 package com.battleshipics4u.game.menuControllers;
 
+import com.battleshipics4u.game.MainApplication;
+import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class PlayerBoardSetController {
+
+    public void back(ActionEvent actionEvent) {
+        MainApplication.start.showMenu();
+    }
 
     public enum ShipNames {
         Carrier, Battleship, Destroyer, Cruiser, Submarine
