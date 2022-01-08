@@ -1,5 +1,9 @@
 package com.battleshipics4u.game.ships;
 
+import javafx.scene.image.Image;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 /**
@@ -8,8 +12,10 @@ import java.util.HashMap;
  * Methods for checking and settings ship states
  */
 public class Ship {
-    private final String shipName;
-    private final int shipLength;
+    public final String shipName;
+    public final int shipLength;
+    public final int pixelsLength, pixelsWidth;
+    public Image img;
     private Orientation shipOrientation = Orientation.Horizontal;
     private int shipRow = -10, shipColumn = -10; //left most and top most square of ship
     private boolean isSunk = false;
@@ -22,10 +28,21 @@ public class Ship {
      * Constructor sets ship name and length
      * @param name the name of the ship
      * @param length the length of the ship
+     * @param pixelsLength length in pixels of ship
+     * @param pixelsWidth width in pixels of ship
+     * @param imageName filename of ship image
      */
-    public Ship(String name, int length) {
-        shipName = name;
-        shipLength = length;
+    public Ship(String name, int length, int pixelsLength, int pixelsWidth, String imageName) {
+        this.shipName = name;
+        this.shipLength = length;
+        this.pixelsLength = pixelsLength;
+        this.pixelsWidth = pixelsWidth;
+        try {
+            img = new Image(new FileInputStream("src/main/resources/com/battleshipics4u/game/" + imageName));
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: image not found");
+        }
+
     }
 
     /**

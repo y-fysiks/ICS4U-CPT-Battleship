@@ -17,6 +17,7 @@ public class MainApplication extends Application {
     public static StartMenu start;
     public static InstructionMenu help;
     public static PlayerBoardSet playerBoard;
+    public static GameStates mainGame;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -24,22 +25,21 @@ public class MainApplication extends Application {
         stage.setTitle("Battleship");
         stage.setResizable(false);
 
+        //create GameState
+        mainGame = new GameStates();
+
         //create all the menuClasses
         start = new StartMenu(primaryStage);
         help = new InstructionMenu();
         playerBoard = new PlayerBoardSet();
 
+
+
         //show the start menu
         start.showMenu();
         stage.show();
 
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
 
-            }
-        }.start();
-        //show the stage
     }
 
     public static void setScene(Scene scene) {

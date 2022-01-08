@@ -9,7 +9,7 @@ import java.util.*;
  * Stores the current internal state of the game, generates positions for the battleships
  */
 public class GameStates {
-    GameBoard player, enemy;
+    public GameBoard player, enemy;
     boolean playerTurn = true;
     Random rand = new Random();
 
