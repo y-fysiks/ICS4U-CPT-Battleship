@@ -34,11 +34,11 @@ public class GameBoard {
         Ship.getShipName.put(4, "Destroyer");
 
 
-        carrier = new Ship("Carrier", 5, 280, 75, "carrier.png");
+        carrier = new Ship("Carrier", 4, 280, 75, "carrier.png");
         battleship = new Ship("Battleship", 4, 280, 50, "battleship.png");
-        cruiser = new Ship("Cruiser", 2, 215, 38, "cruiser.png");
+        cruiser = new Ship("Cruiser", 3, 215, 38, "cruiser.png");
         submarine = new Ship("Submarine", 3, 215, 53, "submarine.png");
-        destroyer = new Ship("Destroyer", 3, 140, 30, "destroyer.png");
+        destroyer = new Ship("Destroyer", 2, 140, 30, "destroyer.png");
 
 
         shipList.add(carrier);

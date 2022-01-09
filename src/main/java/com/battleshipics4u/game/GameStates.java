@@ -50,9 +50,9 @@ public class GameStates {
 
         if (row < 0 || col < 0) return false;
         if (dir == Orientation.Horizontal) {
-            if (row >= GameBoard.DEFAULT_ROWS || col >= GameBoard.DEFAULT_COLS - ship.getShipLength()) return false;
+            if (row >= GameBoard.DEFAULT_ROWS || col > GameBoard.DEFAULT_COLS - ship.getShipLength()) return false;
         } else {
-            if (row >= GameBoard.DEFAULT_ROWS - ship.getShipLength() || col >= GameBoard.DEFAULT_COLS) return false;
+            if (row > GameBoard.DEFAULT_ROWS - ship.getShipLength() || col >= GameBoard.DEFAULT_COLS) return false;
         }
 
         if (checkShipOverlaps(player, row, col, ship.getShipLength(), dir)) return false;

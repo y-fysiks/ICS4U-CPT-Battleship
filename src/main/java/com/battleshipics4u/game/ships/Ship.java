@@ -13,8 +13,8 @@ import java.util.HashMap;
  */
 public class Ship {
     public final String shipName;
-    public final int shipLength;
-    public final int pixelsLength, pixelsWidth;
+    private final int shipLength;
+    private final int pixelsLength, pixelsWidth;
     public Image img;
     private Orientation shipOrientation = Orientation.Horizontal;
     private int shipRow = -10, shipColumn = -10; //left most and top most square of ship
@@ -126,5 +126,13 @@ public class Ship {
      */
     public int getShipLength() {
         return shipLength;
+    }
+
+    public int getPixelsLength() {
+        return pixelsLength;
+    }
+
+    public int getPixelsWidth() {
+        return pixelsWidth;
     }
 }
