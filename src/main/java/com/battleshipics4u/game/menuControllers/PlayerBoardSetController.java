@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -20,11 +21,7 @@ import javafx.scene.layout.Pane;
  * @author Yubo Wang
  */
 public class PlayerBoardSetController {
-    public ImageView carrierImgView;
-    public ImageView battleshipImgView;
-    public ImageView destroyerImgView;
-    public ImageView cruiserImgView;
-    public ImageView submarineImgView;
+
     public GridPane Board;
     public GridPane shipList;
     public AnchorPane backgroundPane;
@@ -67,14 +64,26 @@ public class PlayerBoardSetController {
             });
             i++;
         }
-
     }
 
     public void back(ActionEvent actionEvent) {
         MainApplication.start.showMenu();
     }
 
+    //TODO fix the weird alignment issues
     public void gridClicked(int x, int y) {
+        if (moveShipId == -1) return;
+        System.out.println("Ship placed at " + x + " " + y);
+        ImageView targetImg = images[moveShipId];
+        backgroundPane.getChildren().remove(targetImg);
+        shipList.add(targetImg, x, y);
+        targetImg.setX(0);
+        targetImg.setY(0);
+        targetImg.setLayoutX(0);
+        targetImg.setLayoutY(0);
+        targetImg.setTranslateX(0);
+        targetImg.setTranslateY(0);
+        shipList.setAlignment(Pos.TOP_CENTER);
 
     }
 
@@ -97,18 +106,27 @@ public class PlayerBoardSetController {
 
     }
 
-    //TODO get image rotation working, it's not calling the key press action for some reason
-    public void keyPress(KeyEvent keyEvent) {
-        System.out.println("t");
-        if (keyEvent.getCode().isWhitespaceKey()) {
-            if (moveShipId != -1) {
-                ImageView targetImg = images[moveShipId];
-                if (targetImg.getRotate() == -90) {
-                    targetImg.setRotate(0);
-                } else {
-                    targetImg.setRotate(-90);
-                }
+    public void rightClick(ContextMenuEvent contextMenuEvent) {
+        if (moveShipId != -1) {
+            ImageView targetImg = images[moveShipId];
+            if (targetImg.getRotate() == -90) {
+                targetImg.setRotate(0);
+            } else {
+                targetImg.setRotate(-90);
             }
         }
+        ImageView targetImg = images[moveShipId];
+        double x, y;
+        if (targetImg.getRotate() == 0) {
+            x = contextMenuEvent.getSceneX();
+            y = contextMenuEvent.getSceneY();
+        } else {
+            x = contextMenuEvent.getSceneX() + (targetImg.getFitHeight() / 2.0) - (targetImg.getFitWidth() / 2.0);
+            y = contextMenuEvent.getSceneY() + (targetImg.getFitWidth() / 2.0) - (targetImg.getFitHeight() / 2.0);
+        }
+        x -= (targetImg.getFitWidth() / 2);
+        y -= (targetImg.getFitWidth() / 2);
+        targetImg.setX(x);
+        targetImg.setY(y);
     }
 }

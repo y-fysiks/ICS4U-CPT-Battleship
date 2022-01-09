@@ -8,8 +8,8 @@ import java.io.*;
 import com.battleshipics4u.game.MainApplication; // import MainApplication so we can access the MainApplication resources
 
 public abstract class Menu {
-    private Scene sc; // The scene that the menu will be displayed on. Can be switched to another scene to switch between menus. 
-    private FXMLLoader fxmlLoader; // The FXML loader that will be used to load the FXML file for the GUI layout.
+    public Scene sc; // The scene that the menu will be displayed on. Can be switched to another scene to switch between menus.
+    public FXMLLoader fxmlLoader; // The FXML loader that will be used to load the FXML file for the GUI layout.
 
     /**
      * The constructor for the menu abstract class. This will be called by the subclasses to set up the menu.

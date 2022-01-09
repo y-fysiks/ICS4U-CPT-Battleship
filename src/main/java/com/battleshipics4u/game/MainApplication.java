@@ -2,7 +2,6 @@ package com.battleshipics4u.game;
 
 import com.battleshipics4u.game.ships.Orientation;
 import com.battleshipics4u.game.ships.Ship;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
