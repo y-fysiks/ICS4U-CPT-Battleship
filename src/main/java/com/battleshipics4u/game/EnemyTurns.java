@@ -9,16 +9,12 @@ import java.util.Random;
 /* class which stores all the logic behind the enemy bots moves */
 public class EnemyTurns {
 	Random rand = new Random(); // sets random num generator
-	private List<Shot> shots = new ArrayList<Shot>(); //creates an array which stores all previous shots in order to prevent repetition
+	private ArrayList<Shot> shots = new ArrayList<Shot>(); //creates an array which stores all previous shots in order to prevent repetition
 
-	private boolean previouslyShot(int x, int y) { //checks to see if the shot has been done previously
-		for (Shot shot : shots) { //scans through the array of shots
-			if (shot.getX() == x && shot.getY() == y) { //if shots are the same
-				return true; //previouslyShot returns as true
-			}
-		}
-		return false; //previouslyShot returns as false
-	}
+
+	//DB: I put the previouslyShot method in Shots.java
+	//    It's now called isShotValid
+
 
 	public Shot generateNextTurn(GameBoard gameBoard) { //generates the enemies next turn
 		boolean validTurn = false;
@@ -103,7 +99,7 @@ public class EnemyTurns {
 					}
 				}
 			}
-			if (!previouslyShot(x, y)) { //if the shot has not been previously used
+			if (newShot.isShotValid(x, y, shots)) { //if the shot has not been previously used
 				validTurn = true; //the shot is valid
 				newShot = new Shot(x, y); //it is set as the new shot
 				shots.add(newShot); // saves coordinates of fired shot

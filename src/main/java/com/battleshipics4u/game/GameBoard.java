@@ -48,5 +48,4 @@ public class GameBoard {
         shipList.add(destroyer);
 
     }
-
 }
