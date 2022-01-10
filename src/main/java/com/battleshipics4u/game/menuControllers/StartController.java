@@ -8,12 +8,12 @@ public class StartController {
     
     @FXML
     public void onStartButtonClick(ActionEvent actionEvent) {
-        MainApplication.playerBoard.showMenu();
+        MainApplication.playerBoardSetMenu.showMenu();
     }
 
     @FXML
     public void onHelpButtonClick(ActionEvent actionEvent) {
-        MainApplication.help.showMenu();
+        MainApplication.instructionMenu.showMenu();
     }
 
     public void onExitButtonClick(ActionEvent actionEvent) {

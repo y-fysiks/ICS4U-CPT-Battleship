@@ -6,6 +6,6 @@ import com.battleshipics4u.game.MainApplication;
 public class InstructionsController {
 
     public void back(ActionEvent actionEvent) {
-        MainApplication.start.showMenu();
+        MainApplication.startMenu.showMenu();
     }
 }

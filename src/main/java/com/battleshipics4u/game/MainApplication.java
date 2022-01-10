@@ -13,9 +13,10 @@ import com.battleshipics4u.game.menuClasses.*;
 
 public class MainApplication extends Application {
     private static Stage stage;
-    public static StartMenu start;
-    public static InstructionMenu help;
-    public static PlayerBoardSetMenu playerBoard;
+    public static StartMenu startMenu;
+    public static InstructionMenu instructionMenu;
+    public static PlayerBoardSetMenu playerBoardSetMenu;
+    public static MainGameplayMenu mainGameplayMenu;
     public static GameStates mainGame;
 
     @Override
@@ -28,14 +29,13 @@ public class MainApplication extends Application {
         mainGame = new GameStates();
 
         //create all the menuClasses
-        start = new StartMenu(primaryStage);
-        help = new InstructionMenu();
-        playerBoard = new PlayerBoardSetMenu();
-
-
+        startMenu = new StartMenu(primaryStage);
+        instructionMenu = new InstructionMenu();
+        playerBoardSetMenu = new PlayerBoardSetMenu();
+        mainGameplayMenu = new MainGameplayMenu();
 
         //show the start menu
-        start.showMenu();
+        startMenu.showMenu();
         stage.show();
 
 

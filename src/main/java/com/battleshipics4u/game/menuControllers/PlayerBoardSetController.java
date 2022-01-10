@@ -72,7 +72,7 @@ public class PlayerBoardSetController {
     }
 
     public void back(ActionEvent actionEvent) {
-        MainApplication.start.showMenu();
+        MainApplication.startMenu.showMenu();
     }
 
     public void gridClicked(int x, int y) {
@@ -179,6 +179,7 @@ public class PlayerBoardSetController {
         }
         if (allPlaced) {
             //go to the next scene
+            MainApplication.mainGameplayMenu.showMenu();
         } else {
             placeShipsMessage.setVisible(true);
         }
