@@ -57,6 +57,7 @@ public class GameStates {
 
         if (checkShipOverlaps(player, row, col, ship.getShipLength(), dir)) return false;
         ship.setPosition(row, col, dir);
+        ship.activate();
         return true;
     }
 

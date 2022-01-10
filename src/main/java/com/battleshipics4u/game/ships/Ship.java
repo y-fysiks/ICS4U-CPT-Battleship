@@ -18,6 +18,7 @@ public class Ship {
     public Image img;
     private Orientation shipOrientation = Orientation.Horizontal;
     private int shipRow = -10, shipColumn = -10; //left most and top most square of ship
+    private boolean activated = false;
     private boolean isSunk = false;
     private int countHits = 0;
 
@@ -134,5 +135,17 @@ public class Ship {
 
     public int getPixelsWidth() {
         return pixelsWidth;
+    }
+
+    public void deactivate() {
+        activated = false;
+    }
+
+    public void activate() {
+        activated = true;
+    }
+
+    public boolean getActivation() {
+        return activated;
     }
 }
