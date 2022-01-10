@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="backgroundPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#move" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.PlayerBoardSetController">
+<AnchorPane fx:id="backgroundPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#move" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.PlayerBoardSetController">
   <padding>
     <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
   </padding>
 
   <Button alignment="CENTER" focusTraversable="false" layoutY="360.0" mnemonicParsing="false" onAction="#back" text="Back" AnchorPane.leftAnchor="0.0" />
-  <GridPane fx:id="shipList" alignment="CENTER_LEFT" prefHeight="375.0" prefWidth="380.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="115.0">
+  <GridPane fx:id="shipList" alignment="CENTER_LEFT" prefHeight="375.0" prefWidth="380.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="116.0">
    <columnConstraints>
      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
