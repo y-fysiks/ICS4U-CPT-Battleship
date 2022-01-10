@@ -69,6 +69,7 @@ public class GameStates {
             endRow += shipLength;
         }
         for (Ship s : gb.shipList) {
+            if (!s.getActivation()) continue;
             int sRow = s.getPosition(0), sCol = s.getPosition(1);
             int sEndRow = sRow, sEndCol = sCol;
             if (s.getOrientation() == Orientation.Horizontal) {
