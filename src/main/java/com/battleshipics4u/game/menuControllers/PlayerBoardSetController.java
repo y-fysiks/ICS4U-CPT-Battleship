@@ -68,6 +68,7 @@ public class PlayerBoardSetController {
                 move(e);
             });
             i++;
+
         }
     }
 
@@ -79,15 +80,16 @@ public class PlayerBoardSetController {
         if (moveShipId == -1) return;
         ImageView targetImg = images[moveShipId];
 
+        //change the actual saved ship location in the gameboard
         boolean success;
         if (targetImg.getRotate() == 0) success = MainApplication.mainGame.placeShip(moveShipId, y, x, Orientation.Vertical);
         else success = MainApplication.mainGame.placeShip(moveShipId, y, x, Orientation.Horizontal);
         if (!success) {
-            System.out.println("ship already at location. try again. ");
+            System.out.println("Invalid location. try again. "); // for debugging
             return;
         }
 
-        System.out.println("Ship placed at " + x + " " + y);
+        System.out.println("Ship placed at " + x + " " + y); //  for debugging
 
         backgroundPane.getChildren().remove(targetImg);
         panes[x][y].getChildren().add(targetImg);
@@ -111,7 +113,6 @@ public class PlayerBoardSetController {
         targetImg.setTranslateX(translateX);
         targetImg.setTranslateY(translateY);
 
-        //change the actual saved ship location in the gameboard
 
         moveShipId = -1;
     }
@@ -150,21 +151,22 @@ public class PlayerBoardSetController {
     public void reset(ActionEvent actionEvent) {
         int i = 0;
         for (Ship s : MainApplication.mainGame.player.shipList) {
-            if (!s.getActivation()) continue;
-            s.deactivate();
-            panes[s.getPosition(1)][s.getPosition(0)].getChildren().remove(images[i]);
+            System.out.println(s.getActivation());
+            if (s.getActivation()) {
+                s.deactivate();
+                panes[s.getPosition(1)][s.getPosition(0)].getChildren().remove(images[i]);
 
-            images[i].setTranslateX(shipList.getPrefWidth() / 2);
-            images[i].setTranslateY(0);
-            images[i].setLayoutX(0);
-            images[i].setLayoutY(0);
+                images[i].setTranslateX(shipList.getPrefWidth() / 2);
+                images[i].setTranslateY(0);
+                images[i].setLayoutX(0);
+                images[i].setLayoutY(0);
 
-            images[i].setRotate(-90);
-            shipList.add(images[i], 0, i);
+                images[i].setRotate(-90);
 
+                shipList.add(images[i], 0, i);
 
-
-            images[i].setMouseTransparent(false);
+                images[i].setMouseTransparent(false);
+            }
             i++;
         }
     }

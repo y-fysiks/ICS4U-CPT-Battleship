@@ -17,7 +17,7 @@ public class GameBoard {
     //0 means not fired upon, 1 means hit, 2 means miss
     public ArrayList<Ship> shipList = new ArrayList<>();
 
-    private Ship carrier, battleship, destroyer, cruiser, submarine;
+    private Ship carrier, battleship, cruiser, submarine, destroyer;
 
     public GameBoard() {
         Ship.getShipIdx.put("Carrier", 0);
@@ -43,9 +43,10 @@ public class GameBoard {
 
         shipList.add(carrier);
         shipList.add(battleship);
-        shipList.add(destroyer);
-        shipList.add(submarine);
         shipList.add(cruiser);
+        shipList.add(submarine);
+        shipList.add(destroyer);
+
     }
 
 }
