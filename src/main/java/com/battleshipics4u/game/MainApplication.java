@@ -15,7 +15,7 @@ public class MainApplication extends Application {
     private static Stage stage;
     public static StartMenu start;
     public static InstructionMenu help;
-    public static PlayerBoardSet playerBoard;
+    public static PlayerBoardSetMenu playerBoard;
     public static GameStates mainGame;
 
     @Override
@@ -30,7 +30,7 @@ public class MainApplication extends Application {
         //create all the menuClasses
         start = new StartMenu(primaryStage);
         help = new InstructionMenu();
-        playerBoard = new PlayerBoardSet();
+        playerBoard = new PlayerBoardSetMenu();
 
 
 

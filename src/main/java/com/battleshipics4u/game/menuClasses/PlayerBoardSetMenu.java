@@ -8,14 +8,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 //import com.battleshipics4u.game.menuControllers.PlayerBoardSetController;
 
-public class PlayerBoardSet extends Menu{
+public class PlayerBoardSetMenu extends Menu{
 
     /**
      * The constructor for the menu abstract class. This will be called by the subclasses to set up the menu.
      *
      * @throws IOException if the fxml file cannot be found.
      */
-    public PlayerBoardSet() throws IOException {
+    public PlayerBoardSetMenu() throws IOException {
         super("playerBoardSet-menu.fxml");
     }
 
