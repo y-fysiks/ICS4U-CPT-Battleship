@@ -22,6 +22,9 @@ public class GameStates {
         return playerTurn;
     }
 
+    /**
+     * generates the enemy ship placements randomly and ensures there are no overlaps between them
+     */
     public void generateEnemyShipPlacements() {
         for (Ship ship : enemy.shipList) {
             boolean direction = rand.nextBoolean();
@@ -45,6 +48,14 @@ public class GameStates {
         }
     }
 
+    /**
+     * places a ship based on the specified coordinates for the PLAYER ONLY
+     * @param shipIdx index in list of ship to place
+     * @param row row in grid to place ship
+     * @param col column in grid to place ship
+     * @param dir orientation to place ship in
+     * @return if the placement was successful or not
+     */
     public boolean placeShip(int shipIdx, int row, int col, Orientation dir) {
         Ship ship = player.shipList.get(shipIdx);
 
@@ -61,6 +72,15 @@ public class GameStates {
         return true;
     }
 
+    /**
+     * checks if the ships are overlapping
+     * @param gb the gameBoard to check
+     * @param row the row where the ship to be checked is
+     * @param col the column where the ship
+     * @param shipLength the length of the ship to check
+     * @param orientation the orientation of the ship to check
+     * @return whether or not the input ship size and location overlaps with any other ships
+     */
     private boolean checkShipOverlaps(GameBoard gb, int row, int col, int shipLength, Orientation orientation) {
         int endRow = row, endCol = col;
         if (orientation == Orientation.Horizontal) {

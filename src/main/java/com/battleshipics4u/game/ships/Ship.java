@@ -129,22 +129,40 @@ public class Ship {
         return shipLength;
     }
 
+    /**
+     * gets the length in pixels of the ship
+     * @return length of ship in pixels
+     */
     public int getPixelsLength() {
         return pixelsLength;
     }
 
+    /**
+     * gets the width in pixels of the ship
+     * @return width of ship in pixels
+     */
     public int getPixelsWidth() {
         return pixelsWidth;
     }
 
+    /**
+     * sets the activated variable to false which deactivates the ship
+     */
     public void deactivate() {
         activated = false;
     }
 
+    /**
+     * sets the activated variable to true which activates the ship
+     */
     public void activate() {
         activated = true;
     }
 
+    /**
+     * gets the current activation status of the ship
+     * @return boolean of activation status
+     */
     public boolean getActivation() {
         return activated;
     }
