@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import java.io.*;
 
 import com.battleshipics4u.game.MainApplication; // import MainApplication so we can access the MainApplication resources
+import javafx.scene.text.Font;
 
 public abstract class Menu {
     public Scene sc; // The scene that the menu will be displayed on. Can be switched to another scene to switch between menus.

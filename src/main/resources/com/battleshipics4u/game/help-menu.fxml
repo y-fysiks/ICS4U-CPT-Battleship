@@ -6,13 +6,16 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.InstructionsController">
-   <Button layoutY="360.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Back" textFill="#00ff2f" AnchorPane.leftAnchor="50.0" />
+   <Button layoutY="360.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Back" textFill="#00ff2f" AnchorPane.leftAnchor="50.0">
+      <font>
+         <Font name="Agency FB Bold" size="14.0" />
+      </font></Button>
    <Label alignment="TOP_CENTER" layoutX="531.0" layoutY="45.0" prefHeight="54.0" prefWidth="217.0" text="Instructions" textFill="#10f22a">
       <font>
-         <Font size="36.0" />
+         <Font name="Agency FB Bold" size="48.0" />
       </font>
       <effect>
-         <Glow level="1.0" />
+         <Glow level="0.6" />
       </effect>
    </Label>
    <Label alignment="CENTER" layoutX="98.0" layoutY="113.0" prefHeight="48.0" prefWidth="1084.0" text="Main Goal: Sink your opponent's fleet of five ships before they sink yours" textFill="#10f22a">

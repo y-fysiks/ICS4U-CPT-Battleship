@@ -4,9 +4,14 @@ import com.battleshipics4u.game.ships.Orientation;
 import com.battleshipics4u.game.ships.Ship;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
+
 
 //import custom classes
 import com.battleshipics4u.game.menuClasses.*;
@@ -21,6 +26,9 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        //load fonts
+        Font.loadFont(getClass().getResourceAsStream("/com/battleshipics4u/game/fonts/agency-fb-bold.ttf" ), 36.0); // loads ALL the fonts of family agency-fb-bold, not just size 36
+
         MainApplication.stage = primaryStage;
         stage.setTitle("Battleship");
         stage.setResizable(false);

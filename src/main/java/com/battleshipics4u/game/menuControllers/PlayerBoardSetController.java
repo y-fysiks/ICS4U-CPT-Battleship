@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -58,6 +59,7 @@ public class PlayerBoardSetController {
             int finalI = i;//weird Java quirk, must set variable as final to use inside lambda
             images[i].setOnMouseClicked(e -> {
                 System.out.println(s.shipName + " was clicked"); //for debugging
+                s.activate();
                 moveShipId = finalI;
                 ImageView targetImg = images[moveShipId];
                 targetImg.setMouseTransparent(true);
@@ -154,8 +156,15 @@ public class PlayerBoardSetController {
             System.out.println(s.getActivation());
             if (s.getActivation()) {
                 s.deactivate();
-                panes[s.getPosition(1)][s.getPosition(0)].getChildren().remove(images[i]);
+                if (s.getPosition(1) > 0 && s.getPosition(0) > 0) {
+                    //item was already placed on board
+                    panes[s.getPosition(1)][s.getPosition(0)].getChildren().remove(images[i]);
+                } else {
+                    //item is being held with mouse from user, position is still at default -10, -10
+                    backgroundPane.getChildren().remove(images[i]);
+                }
 
+                s.setPosition(-10, -10, Orientation.Vertical);
                 images[i].setTranslateX(shipList.getPrefWidth() / 2);
                 images[i].setTranslateY(0);
                 images[i].setLayoutX(0);
@@ -186,6 +195,4 @@ public class PlayerBoardSetController {
             placeShipsMessage.setVisible(true);
         }
     }
-
-
 }

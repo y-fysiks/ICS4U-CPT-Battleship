@@ -84,18 +84,18 @@ public class GameStates {
     private boolean checkShipOverlaps(GameBoard gb, int row, int col, int shipLength, Orientation orientation) {
         int endRow = row, endCol = col;
         if (orientation == Orientation.Horizontal) {
-            endCol += shipLength;
+            endCol += shipLength - 1;
         } else {
-            endRow += shipLength;
+            endRow += shipLength - 1;
         }
         for (Ship s : gb.shipList) {
             if (!s.getActivation()) continue;
             int sRow = s.getPosition(0), sCol = s.getPosition(1);
             int sEndRow = sRow, sEndCol = sCol;
             if (s.getOrientation() == Orientation.Horizontal) {
-                sEndCol += shipLength;
+                sEndCol += s.getShipLength() - 1;
             } else {
-                sEndRow += shipLength;
+                sEndRow += s.getShipLength() - 1;
             }
             if (row <= sEndRow && endRow >= sRow && col <= sEndCol && endCol >= sCol) {
                 return true;
