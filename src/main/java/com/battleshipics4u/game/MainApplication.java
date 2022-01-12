@@ -18,6 +18,7 @@ import com.battleshipics4u.game.menuClasses.*;
 
 public class MainApplication extends Application {
     private static Stage stage;
+    public static SplashScreen splashScreen;
     public static StartMenu startMenu;
     public static InstructionMenu instructionMenu;
     public static PlayerBoardSetMenu playerBoardSetMenu;
@@ -37,12 +38,15 @@ public class MainApplication extends Application {
         mainGame = new GameStates();
 
         //create all the menuClasses
+        splashScreen = new SplashScreen();
         startMenu = new StartMenu(primaryStage);
         instructionMenu = new InstructionMenu();
         playerBoardSetMenu = new PlayerBoardSetMenu();
         mainGameplayMenu = new MainGameplayMenu();
 
-        //show the start menu
+        //show the splash screen and start menu
+        stage.show();
+        splashScreen.showMenu();
         startMenu.showMenu();
         stage.show();
 

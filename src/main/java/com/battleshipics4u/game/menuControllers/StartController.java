@@ -17,6 +17,7 @@ public class StartController {
         MainApplication.instructionMenu.showMenu();
     }
 
+    @FXML
     public void onExitButtonClick(ActionEvent actionEvent) {
         System.exit(0);
     }

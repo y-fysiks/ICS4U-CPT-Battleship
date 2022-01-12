@@ -68,7 +68,6 @@ public class Shot {
 	public boolean didShotHit(int shotX, int shotY, GameBoard gameBoard) {
 		for (Ship currentShip: gameBoard.shipList) {
 			if (currentShip.checkHit(shotX, shotY)) {
-
 				return true;
 			}
 		}
