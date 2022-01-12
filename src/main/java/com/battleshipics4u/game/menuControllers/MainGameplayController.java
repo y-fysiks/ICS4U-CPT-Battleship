@@ -10,7 +10,4 @@ public class MainGameplayController {
     public GridPane playerBoard;
     public GridPane enemyBoard;
 
-    public void back(ActionEvent actionEvent) {
-
-    }
 }
