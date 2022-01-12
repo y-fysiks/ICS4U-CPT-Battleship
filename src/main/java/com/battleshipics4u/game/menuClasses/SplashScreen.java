@@ -15,7 +15,7 @@ public class SplashScreen extends Menu{
     public void showMenu() {
         super.showMenu();
         try {
-            Thread.sleep(5000); //pauses the tread for 5 seconds, to show the splash screen
+            Thread.sleep(3000); //pauses the tread for 5 seconds, to show the splash screen
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,9 +1,11 @@
 package com.battleshipics4u.game.ships;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 /**
@@ -38,11 +40,12 @@ public class Ship {
         this.shipLength = length;
         this.pixelsLength = pixelsLength;
         this.pixelsWidth = pixelsWidth;
-        try {
-            img = new Image(new FileInputStream("src/main/resources/com/battleshipics4u/game/" + imageName));
-        } catch (FileNotFoundException e) {
+
+        InputStream imgInp = getClass().getResourceAsStream("/com/battleshipics4u/game/" + imageName);
+        if (imgInp == null) {
             System.out.println("Error: image not found");
         }
+        else img = new Image(imgInp);
 
     }
 

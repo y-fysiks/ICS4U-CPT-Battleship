@@ -56,7 +56,7 @@ public class PlayerBoardSetController {
             images[i].setTranslateX(shipList.getPrefWidth() / 2);
             images[i].setRotate(-90);
             shipList.add(images[i], 0, i);
-            int finalI = i;//weird Java quirk, must set variable as final to use inside lambda
+            int finalI = i;//weird Java quirk, variable must be local to use inside lambda
             images[i].setOnMouseClicked(e -> {
                 System.out.println(s.shipName + " was clicked"); //for debugging
                 s.activate();
