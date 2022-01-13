@@ -46,6 +46,7 @@ public class GameStates {
                 } while (checkShipOverlaps(enemy, row, col, ship.getShipLength(), Orientation.Horizontal));
                 ship.setPosition(row, col, Orientation.Horizontal);
             }
+            ship.activate();
         }
     }
 
