@@ -1,15 +1,19 @@
 package com.battleshipics4u.game;
-import com.battleshipics4u.game.ships.Orientation;
-import com.battleshipics4u.game.ships.Ship;
+
+import com.battleshipics4u.game.menuControllers.MainGameplayController;
+import com.battleshipics4u.game.ships.*;
+import com.battleshipics4u.game.*;
 
 import java.util.*;
 
 /**
  * Yubo Wang
  * Stores the current internal state of the game, generates positions for the battleships
+ * Main game class, storing core gameplay methods
  */
 public class GameStates {
     public GameBoard player, enemy;
+    private ArrayList<Shot> playerShots = new ArrayList<>();
     boolean playerTurn = true;
     Random rand = new Random();
 
@@ -83,6 +87,29 @@ public class GameStates {
         }
         return false;
     }
+
+    /**
+     * Fires a shot
+     * @param shotX x coordinate for the shot
+     * @param shotY y coordinate for the shot
+     * @return the current shot
+     */
+    public boolean makePlayerShot(int shotX, int shotY) {
+        Shot currentShot = new Shot(shotX, shotY);
+
+        if (currentShot.isShotValid(shotX, shotY, playerShots)) {
+            playerShots.add(currentShot);
+            if (currentShot.didShotHit(shotX, shotY, enemy)) {
+                System.out.println("You hit a ship");
+                return true;
+            } else {
+                System.out.println("You missed ");
+                return false;
+            }
+        }
+        return false;
+    }
+
     //------------------------------DEBUGGING METHODS--------------------------------
     /**
      * debugging method, prints the current board

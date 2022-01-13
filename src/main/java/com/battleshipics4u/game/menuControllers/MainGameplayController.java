@@ -1,6 +1,7 @@
 package com.battleshipics4u.game.menuControllers;
 
 import com.battleshipics4u.game.MainApplication;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,22 +15,24 @@ public class MainGameplayController {
     public GridPane playerBoard;
     public GridPane enemyBoard;
     public ImageView crossHairs;
+    public ImageView splash;
+    public ImageView fire;
     public AnchorPane backgroundPane;
     private Pane[][] panes;
+
 
     int fireX, fireY;
 
     @FXML
     public void initialize() {
-
         InputStream crossHairInp = getClass().getResourceAsStream("/com/battleshipics4u/game/target.png");
         if (crossHairInp == null) {
             System.out.println("Error: image not found");
             crossHairs = new ImageView();
         }
         else crossHairs = new ImageView(new Image(crossHairInp));
-        crossHairs.setFitHeight(67.5);
         crossHairs.setFitWidth(67.5);
+        crossHairs.setFitHeight(67.5);
         crossHairs.setVisible(false);
         crossHairs.setMouseTransparent(true);
 
@@ -73,9 +76,32 @@ public class MainGameplayController {
         } else {
             crossHairs.setVisible(false);
         }
+    }
 
 
+    public void onFireButtonClicked(ActionEvent actionEvent) {
+        if (MainApplication.mainGame.makePlayerShot(fireX, fireY)) {
+            InputStream fireInp = getClass().getResourceAsStream("/com/battleshipics4u/game/fire.png");
+            fire = new ImageView(new Image(fireInp));
+            fire.setFitWidth(67.5);
+            fire.setFitHeight(67.5);
+            fire.setVisible(true);
 
+            enemyBoard.add(fire, fireX, fireY);
+
+            panes[fireX][fireY].setStyle("-fx-background-color: #0099ff");
+
+        } else {
+            InputStream splashInp = getClass().getResourceAsStream("/com/battleshipics4u/game/splash.png");
+            splash = new ImageView(new Image(splashInp));
+            splash.setFitWidth(67.5);
+            splash.setFitHeight(67.5);
+            splash.setVisible(true);
+
+            enemyBoard.add(splash, fireX, fireY);
+
+            panes[fireX][fireY].setStyle("-fx-background-color: #0099ff");
+        }
 
     }
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="backgroundPane" onMouseMoved="#move" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.MainGameplayController">
+<AnchorPane fx:id="backgroundPane" onMouseMoved="#move" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.battleshipics4u.game.menuControllers.MainGameplayController">
    <padding>
       <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
    </padding>
@@ -72,7 +72,7 @@
       <Glow level="0.8" />
     </effect>
   </Label>
-  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="598.0" layoutY="338.0" lineSpacing="1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Fire!" textAlignment="CENTER" textFill="#00ff1e">
+  <Button alignment="CENTER" contentDisplay="CENTER" layoutX="598.0" layoutY="338.0" lineSpacing="1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onFireButtonClicked" prefHeight="52.0" prefWidth="84.0" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Fire!" textAlignment="CENTER" textFill="#00ff1e">
       <font>
          <Font name="Agency FB Bold" size="28.0" />
       </font></Button>

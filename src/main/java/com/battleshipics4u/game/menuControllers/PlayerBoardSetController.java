@@ -191,6 +191,7 @@ public class PlayerBoardSetController {
         if (allPlaced) {
             //go to the next scene
             MainApplication.mainGameplayMenu.showMenu();
+            MainApplication.mainGame.generateEnemyShipPlacements();
         } else {
             placeShipsMessage.setVisible(true);
         }

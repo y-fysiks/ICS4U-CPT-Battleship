@@ -4,14 +4,25 @@ import com.battleshipics4u.game.*;
 import com.battleshipics4u.game.ships.*;
 import java.util.ArrayList;
 
+
+//****************** Class functionality has been moved to GameStates
+//****************** makeShot ----> makePlayerShot
+
+
+
 /**
  * Daniel Bajenaru
- * Class which stores the logic for the player turn
+ * Class which stores the methods for the player turn
+ *
  */
 public class PlayerTurn{
     private ArrayList<Shot> playerShots = new ArrayList<>();
     private GameBoard gameBoard;
 
+    /**
+     * Constructor needs the enemy GameBoard
+     * @param currentBoard
+     */
     public PlayerTurn(GameBoard currentBoard) {
         gameBoard = currentBoard;
     }
