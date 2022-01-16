@@ -1,23 +1,23 @@
 package com.battleshipics4u.game;
 
 import com.battleshipics4u.game.ships.*;
+
 import java.util.*;
 
 /**
  * Daniel Bajenaru
  */
 public class GameBoard {
-    Random random = new Random();
 
     public static final int DEFAULT_ROWS = 8;
     public static final int DEFAULT_COLS = 8;
     public List<Shot> injuredShip = new ArrayList<>();
 
-    public int[][] gridStates = new int[DEFAULT_ROWS][DEFAULT_COLS];
+    public int[][] gridStates = new int[DEFAULT_COLS][DEFAULT_ROWS];
     //0 means not fired upon, 1 means hit, 2 means miss
     public ArrayList<Ship> shipList = new ArrayList<>();
 
-    private Ship carrier, battleship, cruiser, submarine, destroyer;
+    private int lastSunkIdx = -1;
 
     public GameBoard() {
         Ship.getShipIdx.put("Carrier", 0);
@@ -34,11 +34,11 @@ public class GameBoard {
         Ship.getShipName.put(4, "Destroyer");
 
 
-        carrier = new Ship("Carrier", 4, 280, 75, "carrier.png");
-        battleship = new Ship("Battleship", 4, 280, 50, "battleship.png");
-        cruiser = new Ship("Cruiser", 3, 215, 38, "cruiser.png");
-        submarine = new Ship("Submarine", 3, 215, 53, "submarine.png");
-        destroyer = new Ship("Destroyer", 2, 140, 30, "destroyer.png");
+        Ship carrier = new Ship("Carrier", 4, 280, 75, "carrier.png");
+        Ship battleship = new Ship("Battleship", 4, 280, 50, "battleship.png");
+        Ship cruiser = new Ship("Cruiser", 3, 215, 38, "cruiser.png");
+        Ship submarine = new Ship("Submarine", 3, 215, 53, "submarine.png");
+        Ship destroyer = new Ship("Destroyer", 2, 140, 30, "destroyer.png");
 
 
         shipList.add(carrier);
@@ -47,5 +47,28 @@ public class GameBoard {
         shipList.add(submarine);
         shipList.add(destroyer);
 
+    }
+
+    /**
+     * Checks if a shot hit a ship on the given gameBoard
+     * @param shot the shot object
+     * @return true if shot did hit, false if missed
+     */
+    public boolean didShotHit(Shot shot) {
+        for (Ship currentShip: shipList) {
+            boolean prevSunk = currentShip.checkSunk();
+            if (currentShip.checkHit(shot.getX(), shot.getY())) {
+                if (currentShip.checkSunk() && !prevSunk) {
+                    lastSunkIdx = currentShip.shipIdx;
+                } else lastSunkIdx = -1;
+                return true;
+            }
+        }
+        lastSunkIdx = -1;
+        return false;
+    }
+
+    public int getLastSunkIdx() {
+        return lastSunkIdx;
     }
 }

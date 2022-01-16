@@ -15,13 +15,13 @@ import java.util.HashMap;
  */
 public class Ship {
     public final String shipName;
+    public final int shipIdx;
     private final int shipLength;
     private final int pixelsLength, pixelsWidth;
     public Image img;
     private Orientation shipOrientation = Orientation.Horizontal;
     private int shipRow = -10, shipColumn = -10; //left most and top most square of ship
     private boolean activated = false;
-    private boolean isSunk = false;
     private int countHits = 0;
 
     public static HashMap<String, Integer> getShipIdx = new HashMap<>();
@@ -40,6 +40,7 @@ public class Ship {
         this.shipLength = length;
         this.pixelsLength = pixelsLength;
         this.pixelsWidth = pixelsWidth;
+        shipIdx = Ship.getShipIdx.get(name);
 
         InputStream imgInp = getClass().getResourceAsStream("/com/battleshipics4u/game/" + imageName);
         if (imgInp == null) {
@@ -109,21 +110,8 @@ public class Ship {
      * @return true if the ship is sunk
      */
     public boolean checkSunk() {
-        if (countHits == shipLength) {
-            isSunk = true;
-            return true;
-        }
-        return false;
+        return countHits >= shipLength;
     }
-
-    /**
-     * gets the ship's name
-     * @return the ship's name
-     */
-    public String getShipName() {
-        return shipName;
-    }
-
     /**
      * gets the ship's length
      * @return the ship's length

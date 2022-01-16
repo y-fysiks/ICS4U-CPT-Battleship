@@ -44,33 +44,15 @@ public class Shot {
 
 	/**
 	 * Checks if the current shot is valid; if it is not a repeat of a previous shot
-	 * @param shotX x coordinate of the shot
-	 * @param shotY y coordinate of the shot
 	 * @param playerShots a list of all the previous shot
 	 * @return true if the shot is valid, false if not
 	 */
-	public boolean isShotValid(int shotX, int shotY, ArrayList<Shot> playerShots) {
+	public boolean isShotValid(ArrayList<Shot> playerShots) {
 		for (Shot shot : playerShots) {
-			if (shot.getX() == shotX && shot.getY() == shotY) { //coordinates of new shot is the same as the shot its testing against
+			if (shot.getX() == x && shot.getY() == y) { //coordinates of new shot is the same as the shot its testing against
 				return false;
 			}
 		}
 		return true;
-	}
-
-	/**
-	 * Checks if a shot hit a ship on the given gameBoard
-	 * @param shotX x coordinate of the shot
-	 * @param shotY y coordinate of the shot
-	 * @param gameBoard the gameBoard containing the ships
-	 * @return true if shot did hit, false if missed
-	 */
-	public boolean didShotHit(int shotX, int shotY, GameBoard gameBoard) {
-		for (Ship currentShip: gameBoard.shipList) {
-			if (currentShip.checkHit(shotX, shotY)) {
-				return true;
-			}
-		}
-		return false;
 	}
 }

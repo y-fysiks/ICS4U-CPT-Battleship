@@ -1,8 +1,6 @@
 package com.battleshipics4u.game;
 
-import com.battleshipics4u.game.menuControllers.MainGameplayController;
 import com.battleshipics4u.game.ships.*;
-import com.battleshipics4u.game.*;
 
 import java.util.*;
 
@@ -13,13 +11,14 @@ import java.util.*;
  */
 public class GameStates {
     public GameBoard player, enemy;
-    private ArrayList<Shot> playerShots = new ArrayList<>();
-    boolean playerTurn = true;
-    Random rand = new Random();
+    private boolean playerTurn = true;
+    private final Random rand = new Random();
+    public final EnemyTurn enemyTurn;
 
     public GameStates() {
         player = new GameBoard();
         enemy = new GameBoard();
+        enemyTurn = new EnemyTurn();
     }
 
     public boolean getTurn() {
@@ -89,26 +88,43 @@ public class GameStates {
         return false;
     }
 
-    /**
-     * Fires a shot
-     * @param shotX x coordinate for the shot
-     * @param shotY y coordinate for the shot
-     * @return the current shot
-     */
-    public boolean makePlayerShot(int shotX, int shotY) {
-        Shot currentShot = new Shot(shotX, shotY);
+    public boolean checkValidPlayerShot(int shotX, int shotY) {
+        return enemy.gridStates[shotX][shotY] == 0; // returns false if the location of the enemy's board has already been shot
+    }
 
-        if (currentShot.isShotValid(shotX, shotY, playerShots)) {
-            playerShots.add(currentShot);
-            if (currentShot.didShotHit(shotX, shotY, enemy)) {
-                System.out.println("You hit a ship");
-                return true;
-            } else {
-                System.out.println("You missed ");
-                return false;
-            }
+    /**
+     * Fires a shot on the Enemy by the Player
+     * PLEASE CHECK IF SHOT IS VALID FIRST USING checkValidPlayerShot()
+     * @param currentShot the Shot to make
+     * @return true for a hit, false for a miss
+     */
+    public boolean takePlayerShot(Shot currentShot) {
+        playerTurn = false;
+        if (enemy.didShotHit(currentShot)) {
+            System.out.println("You hit a ship");
+            enemy.gridStates[currentShot.getX()][currentShot.getY()] = 1;
+            return true;
+        } else {
+            System.out.println("You missed ");
+            enemy.gridStates[currentShot.getX()][currentShot.getY()] = 2;
+            return false;
         }
-        return false;
+    }
+
+    /**
+     * Fires a shot on the Player by the Enemy
+     * @param currentShot the Shot to make
+     * @return true for a hit, false for a miss
+     */
+    public boolean takeEnemyShot(Shot currentShot) {
+        playerTurn = true;
+        if (player.didShotHit(currentShot)) {
+            System.out.println("A ship was hit");
+            return true;
+        } else {
+            System.out.println("Missed");
+            return false;
+        }
     }
 
     //------------------------------DEBUGGING METHODS--------------------------------
