@@ -101,11 +101,9 @@ public class GameStates {
     public boolean takePlayerShot(Shot currentShot) {
         playerTurn = false;
         if (enemy.didShotHit(currentShot)) {
-            System.out.println("You hit a ship");
             enemy.gridStates[currentShot.getX()][currentShot.getY()] = 1;
             return true;
         } else {
-            System.out.println("You missed ");
             enemy.gridStates[currentShot.getX()][currentShot.getY()] = 2;
             return false;
         }
@@ -118,13 +116,7 @@ public class GameStates {
      */
     public boolean takeEnemyShot(Shot currentShot) {
         playerTurn = true;
-        if (player.didShotHit(currentShot)) {
-            System.out.println("A ship was hit");
-            return true;
-        } else {
-            System.out.println("Missed");
-            return false;
-        }
+        return player.didShotHit(currentShot);
     }
 
     //------------------------------DEBUGGING METHODS--------------------------------
@@ -146,7 +138,31 @@ public class GameStates {
                 if (board[i][j]) {
                     System.out.print(". ");
                 }
-                else System.out.print("  ");
+                else System.out.print("_ ");
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * debugging method, prints the current board
+     */
+    public void printPlayerShipLocations() {
+        boolean[][] board = new boolean[8][8];
+        for (Ship s : player.shipList) {
+            int row = s.getPosition(0), col = s.getPosition(1);
+            for (int i = 0; i < s.getShipLength(); i++) {
+                board[row][col] = true;
+                if (s.getOrientation() == Orientation.Vertical) row++;
+                else col++;
+            }
+        }
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (board[i][j]) {
+                    System.out.print(". ");
+                }
+                else System.out.print("_ ");
             }
             System.out.println();
         }

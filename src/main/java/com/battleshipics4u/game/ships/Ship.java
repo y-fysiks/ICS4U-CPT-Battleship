@@ -91,16 +91,12 @@ public class Ship {
      * @return true if the ship is hit
      */
     public boolean checkHit(int shotRow, int shotColumn) {
-        if (shipOrientation == Orientation.Vertical) {
-            if (shotColumn == shipColumn && shotRow >= shipRow && shotRow <= (shipRow + shipLength - 1)) { //checks if the shot is within the length of the ship for vertical orientation
-                countHits++;
-                return true;
-            }
-        } else {
-            if (shotRow == shipRow && shotColumn >= shipColumn && shotColumn <= (shipColumn + shipLength - 1)) { //checks if the shot is within the length of the ship for horizontal orientation
-                countHits++;
-                return true;
-            }
+        if (shipOrientation == Orientation.Vertical && shotColumn == shipColumn && shotRow >= shipRow && shotRow <= (shipRow + shipLength - 1)) { //checks if the shot is within the length of the ship for vertical orientation
+            countHits++;
+            return true;
+        } else if (shipOrientation == Orientation.Horizontal && shotRow == shipRow && shotColumn >= shipColumn && shotColumn <= (shipColumn + shipLength - 1)) { //checks if the shot is within the length of the ship for horizontal orientation
+            countHits++;
+            return true;
         }
         return false;
     }

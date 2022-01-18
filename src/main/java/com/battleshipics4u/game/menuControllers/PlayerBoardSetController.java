@@ -5,6 +5,7 @@ import com.battleshipics4u.game.ships.Orientation;
 import com.battleshipics4u.game.ships.Ship;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
@@ -12,6 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * @author Yubo Wang
@@ -190,8 +194,8 @@ public class PlayerBoardSetController {
         }
         if (allPlaced) {
             //go to the next scene
-            MainApplication.mainGameplayMenu.showMenu();
             MainApplication.mainGame.generateEnemyShipPlacements();
+            MainApplication.mainGameplayMenu.showMenu();
         } else {
             placeShipsMessage.setVisible(true);
         }

@@ -15,16 +15,20 @@ public abstract class Menu {
     /**
      * The constructor for the menu abstract class. This will be called by the subclasses to set up the menu.
      * @param fxmlPath the filename of the fxml file that will be used to load the GUI layout.
-     * @throws IOException if the fxml file cannot be found.
      */
-    public Menu(String fxmlPath) throws IOException {
+    public Menu(String fxmlPath) {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxmlPath));
-        sc = new Scene(fxmlLoader.load(), 1280, 720);
     }
     /**
      * This method will be called by the subclasses to display the menu by switching the scene to the menu's scene.
      */
     public void showMenu() {
+        try {
+            sc = new Scene(fxmlLoader.load(), 1280, 720);
+        } catch (IOException e) {
+            System.out.println("FXML File not found");
+        }
+
         MainApplication.setScene(sc);
     }
 

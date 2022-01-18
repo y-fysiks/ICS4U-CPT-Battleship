@@ -57,7 +57,7 @@ public class GameBoard {
     public boolean didShotHit(Shot shot) {
         for (Ship currentShip: shipList) {
             boolean prevSunk = currentShip.checkSunk();
-            if (currentShip.checkHit(shot.getX(), shot.getY())) {
+            if (currentShip.checkHit(shot.getY(), shot.getX())) {
                 if (currentShip.checkSunk() && !prevSunk) {
                     lastSunkIdx = currentShip.shipIdx;
                 } else lastSunkIdx = -1;
@@ -70,5 +70,12 @@ public class GameBoard {
 
     public int getLastSunkIdx() {
         return lastSunkIdx;
+    }
+
+    public boolean allSunk() {
+        for (Ship s : shipList) {
+            if (!s.checkSunk()) return false;
+        }
+        return true;
     }
 }
