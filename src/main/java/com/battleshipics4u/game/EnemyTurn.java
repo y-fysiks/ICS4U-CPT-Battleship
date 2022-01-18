@@ -23,9 +23,9 @@ public class EnemyTurn {
 			int x = 0;
 			int y = 0;
 			if (gameBoard.injuredShip == null || gameBoard.injuredShip.size() == 0) { //if injuredShip is empty
-				x = rand.nextInt(GameBoard.DEFAULT_COLS) + 1; // generates a random int from 1-8 in order to choose
+				x = rand.nextInt(GameBoard.DEFAULT_COLS); // generates a random int from 0-7 in order to choose
 																// position of shot
-				y = rand.nextInt(GameBoard.DEFAULT_ROWS) + 1; // generates a random int from 1-8 in order to choose
+				y = rand.nextInt(GameBoard.DEFAULT_ROWS); // generates a random int from 0-7 in order to choose
 																// position
 			} else if (gameBoard.injuredShip.size() == 1) { //if injuredShip has a value of 1 (1 shot hit)
 				Shot shot = gameBoard.injuredShip.get(0); //gets x and y of that shot
