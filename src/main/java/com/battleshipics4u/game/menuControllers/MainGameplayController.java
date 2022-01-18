@@ -21,6 +21,7 @@ public class MainGameplayController {
     public AnchorPane backgroundPane;
     public Label InfoLabel;
     private Pane[][] enemyPanes;
+    private Pane[][] playerPanes;
 
     private Image fireImg;
     private Image splashImg;
@@ -67,8 +68,7 @@ public class MainGameplayController {
                 enemyPanes[i][j] = cell;
             }
         }
-
-        Pane[][] playerPanes = new Pane[playerBoard.getColumnCount()][playerBoard.getRowCount()];
+        playerPanes = new Pane[playerBoard.getColumnCount()][playerBoard.getRowCount()];
         for (int i = 0; i < playerBoard.getColumnCount(); i++) {
             for (int j = 0; j < playerBoard.getRowCount(); j++) {
                 Pane cell = new Pane();
@@ -76,7 +76,6 @@ public class MainGameplayController {
                 playerPanes[i][j] = cell;
             }
         }
-
         for (Ship s : MainApplication.mainGame.player.shipList) {
             int x = s.getPosition(1);
             int y = s.getPosition(0);
@@ -105,9 +104,6 @@ public class MainGameplayController {
             imgView.setTranslateX(translateX);
             imgView.setTranslateY(translateY);
         }
-
-        MainApplication.mainGame.printEnemyShipLocations();
-        MainApplication.mainGame.printPlayerShipLocations();
     }
 
     private void gridClicked(int x, int y) {
@@ -150,8 +146,7 @@ public class MainGameplayController {
             fire.setFitHeight(47.5);
             fire.setVisible(true);
             fire.setTranslateX(10);
-            enemyBoard.add(fire, fireX, fireY);
-
+            enemyPanes[fireX][fireY].getChildren().add(fire);
             enemyPanes[fireX][fireY].setStyle("");
 
         } else {
@@ -161,8 +156,7 @@ public class MainGameplayController {
             splash.setFitHeight(47.5);
             splash.setVisible(true);
             splash.setTranslateX(10);
-            enemyBoard.add(splash, fireX, fireY);
-
+            enemyPanes[fireX][fireY].getChildren().add(splash);
             enemyPanes[fireX][fireY].setStyle("");
         }
         fireX = -1;
@@ -187,7 +181,7 @@ public class MainGameplayController {
             fire.setFitHeight(47.5);
             fire.setVisible(true);
             fire.setTranslateX(10);
-            playerBoard.add(fire, enemyShot.getX(), enemyShot.getY());
+            playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(fire);
 
             lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
             if (lastSunkIdx != -1) {
@@ -196,6 +190,12 @@ public class MainGameplayController {
             }
         } else {
             System.out.println("The enemy missed");
+            ImageView splash = new ImageView(splashImg);
+            splash.setFitWidth(47.5);
+            splash.setFitHeight(47.5);
+            splash.setVisible(true);
+            splash.setTranslateX(10);
+            playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(splash);
         }
 
         if (MainApplication.mainGame.player.allSunk()) {
