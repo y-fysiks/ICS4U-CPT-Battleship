@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import java.io.*;
 import java.util.Objects;
+import java.util.Random;
 
 public class MainGameplayController {
     public GridPane playerBoard;
@@ -22,6 +23,7 @@ public class MainGameplayController {
     public Label InfoLabel;
     private Pane[][] enemyPanes;
     private Pane[][] playerPanes;
+    private final Random rand = new Random();
 
     private Image fireImg;
     private Image splashImg;
@@ -146,6 +148,8 @@ public class MainGameplayController {
             fire.setFitHeight(47.5);
             fire.setVisible(true);
             fire.setTranslateX(10);
+            fire.setTranslateY(10);
+
             enemyPanes[fireX][fireY].getChildren().add(fire);
             enemyPanes[fireX][fireY].setStyle("");
 
@@ -156,6 +160,8 @@ public class MainGameplayController {
             splash.setFitHeight(47.5);
             splash.setVisible(true);
             splash.setTranslateX(10);
+            splash.setTranslateY(10);
+
             enemyPanes[fireX][fireY].getChildren().add(splash);
             enemyPanes[fireX][fireY].setStyle("");
         }
@@ -181,6 +187,8 @@ public class MainGameplayController {
             fire.setFitHeight(47.5);
             fire.setVisible(true);
             fire.setTranslateX(10);
+            fire.setTranslateY(10);
+
             playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(fire);
 
             lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
@@ -195,6 +203,8 @@ public class MainGameplayController {
             splash.setFitHeight(47.5);
             splash.setVisible(true);
             splash.setTranslateX(10);
+            splash.setTranslateY(10);
+
             playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(splash);
         }
 
@@ -203,5 +213,11 @@ public class MainGameplayController {
             //TODO IMPLEMENT THIS
         }
 
+    }
+
+    public void generateRandom(ActionEvent actionEvent) {
+        Shot randomShot = MainApplication.mainGame.generateRandomPlayerShot();
+        fireX = randomShot.getX();
+        fireY = randomShot.getY();
     }
 }

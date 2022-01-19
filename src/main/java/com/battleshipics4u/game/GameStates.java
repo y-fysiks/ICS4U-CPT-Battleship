@@ -92,6 +92,14 @@ public class GameStates {
         return enemy.gridStates[shotX][shotY] == 0; // returns false if the location of the enemy's board has already been shot
     }
 
+    public Shot generateRandomPlayerShot() {
+        Shot s;
+        do {
+            s = new Shot(rand.nextInt(8), rand.nextInt(8));
+        } while (checkValidPlayerShot(s.getX(), s.getY()));
+        return s;
+    }
+
     /**
      * Fires a shot on the Enemy by the Player
      * PLEASE CHECK IF SHOT IS VALID FIRST USING checkValidPlayerShot()

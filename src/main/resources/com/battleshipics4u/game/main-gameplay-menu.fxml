@@ -76,12 +76,12 @@
       <font>
          <Font name="Agency FB Bold" size="28.0" />
       </font></Button>
-  <Button layoutX="603.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Random" textFill="#00ff1e">
+  <Button layoutX="603.0" layoutY="414.0" mnemonicParsing="false" onAction="#generateRandom" style="-fx-background-color: #000000; -fx-border-color: #008000;" text="Random" textFill="#00ff1e">
       <font>
          <Font name="Agency FB Bold" size="18.0" />
       </font></Button>
-  <StackPane layoutX="498.0" layoutY="100.0" prefHeight="70.0" prefWidth="283.0" AnchorPane.topAnchor="0.0">
-    <Label fx:id="InfoLabel" text="INFO" textFill="#00ff1e" StackPane.alignment="CENTER">
+  <StackPane layoutX="450.0" layoutY="41.0" prefHeight="70.0" prefWidth="397.0" AnchorPane.topAnchor="15.0">
+    <Label fx:id="InfoLabel" textFill="#00ff1e" StackPane.alignment="CENTER">
       <font>
         <Font name="Agency FB Bold" size="28.0" />
       </font>
