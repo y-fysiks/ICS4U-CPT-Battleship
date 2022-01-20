@@ -67,13 +67,13 @@ public class EnemyTurn {
 					int yMax = Math.max(shot1.getY(), shot2.getY()); //gets the bigger y value
 					if(direction == 0) {
 						y = yMin-1; //uses the smaller y value and moves one space up
-						if(y<1) { //if you can not go up any further
+						if(y<0) { //if you can not go up any further
 							y = yMax+1; //goes down
 						}
 					}
 					if(direction == 1) {
 						y = yMax+1; //uses the bigger y value and moves one space down
-						if(y>GameBoard.DEFAULT_ROWS + 1) { //if you can not go down any further
+						if(y>=GameBoard.DEFAULT_ROWS) { //if you can not go down any further
 							y = yMin-1; //goes up
 						}
 					}
@@ -84,13 +84,13 @@ public class EnemyTurn {
 					int xMax = Math.max(shot1.getX(), shot2.getX()); //gets the bigger x value
 					if(direction == 0) {
 						x = xMin-1; //uses the smaller x value and moves one space left
-						if(x<1) { //if you can not go left any further
+						if(x<0) { //if you can not go left any further
 							x = xMax+1; //goes right
 						}
 					}
 					if(direction == 1) {
 						x = xMax+1; //uses the bigger x value and moves one space right
-						if(x>GameBoard.DEFAULT_COLS + 1) { //if you can not go right any further
+						if(x>=GameBoard.DEFAULT_COLS) { //if you can not go right any further
 							x = xMin-1; //goes left
 						}
 					}
