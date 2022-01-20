@@ -96,7 +96,7 @@ public class GameStates {
         Shot s;
         do {
             s = new Shot(rand.nextInt(8), rand.nextInt(8));
-        } while (checkValidPlayerShot(s.getX(), s.getY()));
+        } while (!checkValidPlayerShot(s.getX(), s.getY()));
         return s;
     }
 
@@ -125,6 +125,22 @@ public class GameStates {
     public boolean takeEnemyShot(Shot currentShot) {
         playerTurn = true;
         return player.didShotHit(currentShot);
+    }
+
+    /**
+     * Checks if the player has won the game
+     * @return true if all enemy ships have been sunk and not all player ships have been sunk
+     */
+    public boolean checkPlayerWon() {
+        return enemy.allSunk();
+    }
+
+    /**
+     * Checks if the enemy has won the game
+     * @return true if all player ships have been sunk and not all enemy ships have been sunk
+     */
+    public boolean checkEnemyWon() {
+        return player.allSunk();
     }
 
     //------------------------------DEBUGGING METHODS--------------------------------

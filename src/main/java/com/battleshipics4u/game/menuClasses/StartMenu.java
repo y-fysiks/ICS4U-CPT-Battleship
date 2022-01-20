@@ -2,12 +2,12 @@ package com.battleshipics4u.game.menuClasses;
 
 import java.io.IOException;
 
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-
 public class StartMenu extends Menu {
-    
-    public StartMenu(Stage stage) throws IOException {
+
+    /**
+     * The constructor for the Start menu
+     */
+    public StartMenu() {
         super("start-menu.fxml");
     }
 }

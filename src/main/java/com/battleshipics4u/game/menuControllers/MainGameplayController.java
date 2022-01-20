@@ -20,10 +20,10 @@ public class MainGameplayController {
     public GridPane enemyBoard;
     public ImageView crossHairs;
     public AnchorPane backgroundPane;
-    public Label InfoLabel;
+    public Label InfoLabelPlayer;
+    public Label InfoLabelEnemy;
     private Pane[][] enemyPanes;
     private Pane[][] playerPanes;
-    private final Random rand = new Random();
 
     private Image fireImg;
     private Image splashImg;
@@ -171,17 +171,16 @@ public class MainGameplayController {
         int lastSunkIdx = MainApplication.mainGame.enemy.getLastSunkIdx();
         if (lastSunkIdx != -1) {
             //ship was just sunk by last move
-            InfoLabel.setText("You sunk the enemy's " + Ship.getShipName.get(lastSunkIdx));
+            InfoLabelPlayer.setText("You sunk the enemy's " + Ship.getShipName.get(lastSunkIdx));
         }
-        if (MainApplication.mainGame.enemy.allSunk()) {
-            //THIS MEANS THE PLAYER HAS SUNK ALL THE ENEMY SHIPS AND HAS WON
-            //TODO IMPLEMENT THIS
+        if (MainApplication.mainGame.checkPlayerWon()) {
+            MainApplication.endMenu.showMenu(true);
+            return;
         }
 
         //let the computer take a turn
         Shot enemyShot = MainApplication.mainGame.enemyTurn.generateNextTurn(MainApplication.mainGame.player);
         if (MainApplication.mainGame.takeEnemyShot(enemyShot)) {
-            System.out.println("Your fleet was hit!: " + enemyShot.getX() + " " + enemyShot.getY());
             ImageView fire = new ImageView(fireImg);
             fire.setFitWidth(47.5);
             fire.setFitHeight(47.5);
@@ -194,10 +193,9 @@ public class MainGameplayController {
             lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
             if (lastSunkIdx != -1) {
                 //ship was just sunk by last computer move
-                InfoLabel.setText("Your " + Ship.getShipName.get(lastSunkIdx) + " was sunk");
+                InfoLabelEnemy.setText("The Enemy sunk your " + Ship.getShipName.get(lastSunkIdx));
             }
         } else {
-            System.out.println("The enemy missed");
             ImageView splash = new ImageView(splashImg);
             splash.setFitWidth(47.5);
             splash.setFitHeight(47.5);
@@ -208,16 +206,15 @@ public class MainGameplayController {
             playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(splash);
         }
 
-        if (MainApplication.mainGame.player.allSunk()) {
+        if (MainApplication.mainGame.checkEnemyWon()) {
             //THIS MEANS THE ENEMY HAS SUNK ALL THE PLAYER SHIPS AND HAS WON
-            //TODO IMPLEMENT THIS
+            MainApplication.endMenu.showMenu(false);
         }
 
     }
 
     public void generateRandom(ActionEvent actionEvent) {
         Shot randomShot = MainApplication.mainGame.generateRandomPlayerShot();
-        fireX = randomShot.getX();
-        fireY = randomShot.getY();
+        gridClicked(randomShot.getX(), randomShot.getY());
     }
 }

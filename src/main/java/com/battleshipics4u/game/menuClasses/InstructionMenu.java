@@ -4,7 +4,10 @@ import java.io.IOException;
 
 public class InstructionMenu extends Menu{
 
-    public InstructionMenu() throws IOException {
+    /**
+     * The constructor for the Instructions menu
+     */
+    public InstructionMenu() {
         super("help-menu.fxml");
     }
 }

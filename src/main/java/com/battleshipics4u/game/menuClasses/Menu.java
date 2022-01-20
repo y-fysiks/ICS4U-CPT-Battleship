@@ -8,6 +8,10 @@ import java.io.*;
 import com.battleshipics4u.game.MainApplication; // import MainApplication so we can access the MainApplication resources
 import javafx.scene.text.Font;
 
+/**
+ * @author Yubo Wang
+ * An abstract class that simplifies some scene loading code.
+ */
 public abstract class Menu {
     public Scene sc; // The scene that the menu will be displayed on. Can be switched to another scene to switch between menus.
     public FXMLLoader fxmlLoader; // The FXML loader that will be used to load the FXML file for the GUI layout.

@@ -10,11 +10,9 @@ import javafx.scene.image.ImageView;
 public class PlayerBoardSetMenu extends Menu{
 
     /**
-     * The constructor for the menu abstract class. This will be called by the subclasses to set up the menu.
-     *
-     * @throws IOException if the fxml file cannot be found.
+     * The constructor for the player fleet setting menu
      */
-    public PlayerBoardSetMenu() throws IOException {
+    public PlayerBoardSetMenu() {
         super("playerBoardSet-menu.fxml");
     }
 

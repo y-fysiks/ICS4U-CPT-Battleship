@@ -4,10 +4,9 @@ import java.io.IOException;
 
 public class SplashScreen extends Menu{
     /**
-     * The constructor for the menu abstract class. This will be called by the subclasses to set up the menu.
-     * @throws IOException if the fxml file cannot be found.
+     * The constructor for the splashscreen.
      */
-    public SplashScreen() throws IOException {
+    public SplashScreen() {
         super("splash-screen.fxml");
     }
 

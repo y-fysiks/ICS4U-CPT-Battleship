@@ -23,10 +23,11 @@ public class MainApplication extends Application {
     public static InstructionMenu instructionMenu;
     public static PlayerBoardSetMenu playerBoardSetMenu;
     public static MainGameplayMenu mainGameplayMenu;
+    public static EndMenu endMenu;
     public static GameStates mainGame;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
         //load fonts
         Font.loadFont(getClass().getResourceAsStream("/com/battleshipics4u/game/fonts/agency-fb-bold.ttf" ), 36.0); // loads ALL the fonts of family agency-fb-bold, not just size 36
 
@@ -34,27 +35,30 @@ public class MainApplication extends Application {
         stage.setTitle("Battleship");
         stage.setResizable(false);
 
-        //create GameState
-        mainGame = new GameStates();
-
-        //create all the menuClasses
-        splashScreen = new SplashScreen();
-        startMenu = new StartMenu(primaryStage);
-        instructionMenu = new InstructionMenu();
-        playerBoardSetMenu = new PlayerBoardSetMenu();
-        mainGameplayMenu = new MainGameplayMenu();
+        initEverything();
 
         //show the splash screen and start menu
         stage.show();
         splashScreen.showMenu();
         startMenu.showMenu();
-        stage.show();
-
-
     }
 
     public static void setScene(Scene scene) {
         stage.setScene(scene);
+    }
+
+    public static void initEverything() {
+        //create GameState
+        mainGame = new GameStates();
+
+        //create all the menuClasses
+        splashScreen = new SplashScreen();
+        startMenu = new StartMenu();
+        instructionMenu = new InstructionMenu();
+        playerBoardSetMenu = new PlayerBoardSetMenu();
+        mainGameplayMenu = new MainGameplayMenu();
+        endMenu = new EndMenu();
+
     }
 
     public static void main(String[] args) {
