@@ -61,6 +61,7 @@ public class GameBoard {
                 injuredShip.add(shot);
                 if (currentShip.checkSunk() && !prevSunk) {
                     lastSunkIdx = currentShip.shipIdx;
+                    injuredShip.clear();
                 } else lastSunkIdx = -1;
                 return true;
             }
