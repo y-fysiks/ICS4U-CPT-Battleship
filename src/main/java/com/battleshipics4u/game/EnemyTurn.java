@@ -35,25 +35,25 @@ public class EnemyTurn {
 				//System.out.println("Direction: " + direction);
 				if (direction == 0) {
 					x = shot.getX() - 1; // goes left
-					if (x < 1) { //if you can not go any further left
+					if (x < 0) { //if you can not go any further left
 						x = shot.getX() + 1; // goes right
 					}
 				}
 				if (direction == 1) {
 					x = shot.getX() + 1; // goes right
-					if (x > GameBoard.DEFAULT_COLS + 1) { //if you can not go any further right
+					if (x >= GameBoard.DEFAULT_COLS) { //if you can not go any further right
 						x = shot.getX() - 1; // goes left
 					}
 				}
 				if (direction == 2) {
 					y = shot.getY() - 1; // goes up
-					if (y < 1) { //if you can not go any further up
+					if (y < 0) { //if you can not go any further up
 						y = shot.getY() + 1; // goes down
 					}
 				}
 				if (direction == 3) {
 					y = shot.getY() + 1; // goes down
-					if (y > GameBoard.DEFAULT_ROWS + 1) { //if you can not go any further down
+					if (y >= GameBoard.DEFAULT_ROWS) { //if you can not go any further down
 						y = shot.getY() - 1; // goes up
 					}
 				}

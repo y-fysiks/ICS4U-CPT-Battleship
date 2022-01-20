@@ -58,6 +58,7 @@ public class GameBoard {
         for (Ship currentShip: shipList) {
             boolean prevSunk = currentShip.checkSunk();
             if (currentShip.checkHit(shot.getY(), shot.getX())) {
+                injuredShip.add(shot);
                 if (currentShip.checkSunk() && !prevSunk) {
                     lastSunkIdx = currentShip.shipIdx;
                 } else lastSunkIdx = -1;

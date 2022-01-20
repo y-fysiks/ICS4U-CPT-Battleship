@@ -138,7 +138,7 @@ public class MainGameplayController {
     }
 
 
-    public void onFireButtonClicked(ActionEvent actionEvent) {
+    public void onFireButtonClicked(ActionEvent actionEvent) throws InterruptedException {
         if (fireX < 0 && fireY < 0) return;
         Shot shot = new Shot(fireX, fireY);
         if (MainApplication.mainGame.takePlayerShot(shot)) {
@@ -177,6 +177,7 @@ public class MainGameplayController {
             MainApplication.endMenu.showMenu(true);
             return;
         }
+
 
         //let the computer take a turn
         Shot enemyShot = MainApplication.mainGame.enemyTurn.generateNextTurn(MainApplication.mainGame.player);
