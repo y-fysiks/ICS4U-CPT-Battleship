@@ -138,7 +138,7 @@ public class MainGameplayController {
     }
 
 
-    public void onFireButtonClicked(ActionEvent actionEvent) throws InterruptedException {
+    public void onFireButtonClicked(ActionEvent actionEvent) throws Exception {
         if (fireX < 0 && fireY < 0) return;
         Shot shot = new Shot(fireX, fireY);
         if (MainApplication.mainGame.takePlayerShot(shot)) {
