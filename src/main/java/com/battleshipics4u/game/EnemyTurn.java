@@ -16,7 +16,7 @@ public class EnemyTurn {
 	 * Generates the next turn for the
 	 * @param gameBoard the gameBoard that is being fired upon
 	 * @return a Shot object indicating the coordinates to fire upon
-	 * @throws Exception 
+	 * @throws Exception if the AI is unable to find a spot to shoot at
 	 */
 	public Shot generateNextTurn(GameBoard gameBoard) throws Exception { //generates the enemies next turn
 		boolean validTurn = false;
@@ -113,6 +113,7 @@ public class EnemyTurn {
 				validTurn = true; //the shot is valid
 				shots.add(newShot); // saves coordinates of fired shot
 			}
+			n++;
 		}
 		return newShot; //returns the valid shot
 	}

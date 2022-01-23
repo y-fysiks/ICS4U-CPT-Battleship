@@ -4,6 +4,7 @@ import com.battleshipics4u.game.MainApplication;
 import com.battleshipics4u.game.Shot;
 import com.battleshipics4u.game.ships.Orientation;
 import com.battleshipics4u.game.ships.Ship;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,9 +12,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.util.Duration;
+
 import java.io.*;
 import java.util.Objects;
-import java.util.Random;
 
 public class MainGameplayController {
     public GridPane playerBoard;
@@ -138,7 +140,7 @@ public class MainGameplayController {
     }
 
 
-    public void onFireButtonClicked(ActionEvent actionEvent) throws Exception {
+    public void onFireButtonClicked(ActionEvent actionEvent) throws Exception{
         if (fireX < 0 && fireY < 0) return;
         Shot shot = new Shot(fireX, fireY);
         if (MainApplication.mainGame.takePlayerShot(shot)) {
@@ -178,7 +180,21 @@ public class MainGameplayController {
             return;
         }
 
+        //make a delay for a few seconds
+        PauseTransition delayAfterPlayerTurn = new PauseTransition(Duration.seconds(0.6));//delay for 0.6 seconds after the player goes, and then let the computer go
+        delayAfterPlayerTurn.setOnFinished(e -> {
+            try {
+                computerTurn();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+        delayAfterPlayerTurn.play();
 
+
+    }
+
+    public void computerTurn() throws Exception{
         //let the computer take a turn
         Shot enemyShot = MainApplication.mainGame.enemyTurn.generateNextTurn(MainApplication.mainGame.player);
         if (MainApplication.mainGame.takeEnemyShot(enemyShot)) {
@@ -191,7 +207,7 @@ public class MainGameplayController {
 
             playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(fire);
 
-            lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
+            int lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
             if (lastSunkIdx != -1) {
                 //ship was just sunk by last computer move
                 InfoLabelEnemy.setText("The Enemy sunk your " + Ship.getShipName.get(lastSunkIdx));
@@ -211,7 +227,6 @@ public class MainGameplayController {
             //THIS MEANS THE ENEMY HAS SUNK ALL THE PLAYER SHIPS AND HAS WON
             MainApplication.endMenu.showMenu(false);
         }
-
     }
 
     public void generateRandom(ActionEvent actionEvent) {

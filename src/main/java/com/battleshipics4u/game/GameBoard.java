@@ -12,7 +12,7 @@ public class GameBoard {
 	public static final int DEFAULT_ROWS = 8;
 	public static final int DEFAULT_COLS = 8;
 //    public List<Shot> injuredShip = new ArrayList<>();
-	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<Integer, List<Shot>>();
+	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>();
 
 	public int[][] gridStates = new int[DEFAULT_COLS][DEFAULT_ROWS];
 	// 0 means not fired upon, 1 means hit, 2 means miss
@@ -61,7 +61,7 @@ public class GameBoard {
 				if (shots != null) {
 					shots.add(shot);
 				} else {
-					List<Shot> injShots = new ArrayList<Shot>();
+					List<Shot> injShots = new ArrayList<>();
 					injShots.add(shot);
 					injuredShips.put(currentShip.shipIdx, injShots);
 				}
