@@ -65,7 +65,7 @@ public class GameBoard {
 					injShots.add(shot);
 					injuredShips.put(currentShip.shipIdx, injShots);
 				}
-				if (currentShip.checkSunk() && !prevSunk) {
+				if (currentShip.checkSunk()) {
 					lastSunkIdx = currentShip.shipIdx;
 					injuredShips.remove(lastSunkIdx);
 				} else

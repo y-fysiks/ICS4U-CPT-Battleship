@@ -109,7 +109,7 @@ public class EnemyTurn {
 			}
 			
 			newShot = new Shot(x, y); //it is set as the new shot
-			if (newShot.isShotValid(shots)) { //if the shot has not been previously used
+			if (newShot.isShotValid(x, y, shots)) { //if the shot has not been previously used
 				validTurn = true; //the shot is valid
 				shots.add(newShot); // saves coordinates of fired shot
 			}

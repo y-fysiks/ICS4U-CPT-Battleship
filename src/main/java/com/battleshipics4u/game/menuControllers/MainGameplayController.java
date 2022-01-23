@@ -108,6 +108,38 @@ public class MainGameplayController {
             imgView.setTranslateX(translateX);
             imgView.setTranslateY(translateY);
         }
+
+        for (Ship s : MainApplication.mainGame.enemy.shipList) {
+            int x = s.getPosition(1);
+            int y = s.getPosition(0);
+            ImageView imgView = new ImageView(s.img);
+            imgView.setFitHeight(s.getPixelsLength() * 0.9);
+            imgView.setFitWidth(s.getPixelsWidth() * 0.9);
+
+            enemyPanes[x][y].getChildren().add(imgView);
+
+            imgView.setLayoutX(0);
+            imgView.setLayoutY(0);
+
+            double translateX = (67.5 - s.getPixelsWidth() * 0.9) / 2;
+            double translateY = (s.getShipLength() * 67.5 - s.getPixelsLength() * 0.9) / 2;
+            if (s.getOrientation() == Orientation.Horizontal) {
+                imgView.setRotate(-90);
+                double temp = translateX;
+                //noinspection SuspiciousNameCombination suppress the warning
+                translateX = translateY;
+                translateY = temp;
+
+                translateX += (imgView.getFitHeight() / 2.0) - (imgView.getFitWidth() / 2.0);
+                translateY += (imgView.getFitWidth() / 2.0) - (imgView.getFitHeight() / 2.0);
+            }
+
+            imgView.setTranslateX(translateX);
+            imgView.setTranslateY(translateY);
+
+            imgView.setVisible(false);
+        }
+
     }
 
     private void gridClicked(int x, int y) {
@@ -209,7 +241,7 @@ public class MainGameplayController {
 
             int lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
             if (lastSunkIdx != -1) {
-                //ship was just sunk by last computer move
+                //ship was just sunk by last computer move ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FOR MAKING TEXT APPEAR ONLY FOR TWO TURNS
                 InfoLabelEnemy.setText("The Enemy sunk your " + Ship.getShipName.get(lastSunkIdx));
             }
         } else {
