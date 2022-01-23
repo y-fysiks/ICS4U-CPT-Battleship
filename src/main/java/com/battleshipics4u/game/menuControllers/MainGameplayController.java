@@ -208,6 +208,11 @@ public class MainGameplayController {
             InfoLabelPlayer.setText("You sunk the enemy's " + Ship.getShipName.get(lastSunkIdx));
         }
         if (MainApplication.mainGame.checkPlayerWon()) {
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                System.out.println("Didn't work");
+            }
             MainApplication.endMenu.showMenu(true);
             return;
         }
@@ -257,6 +262,11 @@ public class MainGameplayController {
 
         if (MainApplication.mainGame.checkEnemyWon()) {
             //THIS MEANS THE ENEMY HAS SUNK ALL THE PLAYER SHIPS AND HAS WON
+            try {
+                Thread.sleep(4000);
+            } catch (Exception e) {
+                System.out.println("Didn't work");
+            }
             MainApplication.endMenu.showMenu(false);
         }
     }
