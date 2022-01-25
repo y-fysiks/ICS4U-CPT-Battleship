@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Daniel Gordon
+ * @author Daniel Gordon
  * class which stores all the logic behind the enemy bots moves
  */
 public class EnemyTurn {
@@ -119,6 +119,7 @@ public class EnemyTurn {
 		return newShot; //returns the valid shot
 	}
 
+	//gets the minimum y value
 	public int getYMin(List<Shot> list) {
 		int min = Integer.MAX_VALUE;
 		for (Shot s : list) {
@@ -126,6 +127,7 @@ public class EnemyTurn {
 		}
 		return min;
 	}
+	//gets the maximum y value
 	public int getYMax(List<Shot> list) {
 		int max = Integer.MIN_VALUE;
 		for (Shot s : list) {
@@ -133,6 +135,7 @@ public class EnemyTurn {
 		}
 		return max;
 	}
+	//gets the minimum x value
 	public int getXMin(List<Shot> list) {
 		int min = Integer.MAX_VALUE;
 		for (Shot s : list) {
@@ -140,6 +143,7 @@ public class EnemyTurn {
 		}
 		return min;
 	}
+	//gets the maximum x value
 	public int getXMax(List<Shot> list) {
 		int max = Integer.MIN_VALUE;
 		for (Shot s : list) {

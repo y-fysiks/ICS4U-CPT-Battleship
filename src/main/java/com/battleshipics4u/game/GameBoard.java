@@ -6,12 +6,13 @@ import java.util.*;
 
 /**
  * @author Daniel Bajenaru
+ * @author Daniel Gordon
  */
 public class GameBoard {
 
 	public static final int DEFAULT_ROWS = 8;
 	public static final int DEFAULT_COLS = 8;
-	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>(); // stores ships that are injured for the AI
+	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>(); // stores ships that are injured for the AI. Linkedhashmap allows the program to remember the order of of which ship was hit first, allowing the program to prioritize finishing off the first ship it hit
 
 	public int[][] gridStates = new int[DEFAULT_COLS][DEFAULT_ROWS];
 	// 0 means not fired upon, 1 means hit, 2 means miss
@@ -59,17 +60,17 @@ public class GameBoard {
 	public boolean didShotHit(Shot shot) {
 		for (Ship currentShip : shipList) {
 			if (currentShip.checkHit(shot.getY(), shot.getX())) {
-				List<Shot> shots = injuredShips.get(currentShip.shipIdx);
-				if (shots != null) {
-					shots.add(shot);
+				List<Shot> shots = injuredShips.get(currentShip.shipIdx); //checks which ship is being hit
+				if (shots != null) { //if the shot is empty
+					shots.add(shot); //adds a shot to the list
 				} else {
 					List<Shot> injShots = new ArrayList<>();
-					injShots.add(shot);
-					injuredShips.put(currentShip.shipIdx, injShots);
+					injShots.add(shot); //adds the shot to the list of injured shots
+					injuredShips.put(currentShip.shipIdx, injShots); //stores the ships ID aswell as the shots that injured it
 				}
-				if (currentShip.checkSunk()) {
-					lastSunkIdx = currentShip.shipIdx;
-					injuredShips.remove(lastSunkIdx);
+				if (currentShip.checkSunk()) { //if ship is sunk
+					lastSunkIdx = currentShip.shipIdx; //sets lastSunkIdx to the current ship
+					injuredShips.remove(lastSunkIdx); //removes the ship from the injuredShips array
 				} else
 					lastSunkIdx = -1;
 				return true;
