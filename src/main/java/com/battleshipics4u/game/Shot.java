@@ -5,7 +5,8 @@ import com.battleshipics4u.game.ships.Ship;
 import java.util.ArrayList;
 
 /**
- * Daniel Gordon, Daniel Bajenaru
+ * @author Daniel Gordon
+ * @author Daniel Bajenaru
  * Stores coordinates of a shot methods for checking that shot
  */
 public class Shot {
@@ -54,21 +55,5 @@ public class Shot {
 			}
 		}
 		return true;
-	}
-
-	/**
-	 * Checks if a shot hit a ship on the given gameBoard
-	 * @param shotX x coordinate of the shot
-	 * @param shotY y coordinate of the shot
-	 * @param gameBoard the gameBoard containing the ships
-	 * @return true if shot did hit, false if missed
-	 */
-	public boolean didShotHit(int shotX, int shotY, GameBoard gameBoard) {
-		for (Ship currentShip: gameBoard.shipList) {
-			if (currentShip.checkHit(shotX, shotY)) {
-				return true;
-			}
-		}
-		return false;
 	}
 }

@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 
 /**
- * Daniel Bajenaru
+ * @author Daniel Bajenaru
  * Class for ships
  * Methods for checking and settings ship states
  */

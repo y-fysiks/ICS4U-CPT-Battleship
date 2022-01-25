@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.text.Font;
 
+/**
+ * @author Sami
+ */
 public class StartController {
     
     @FXML

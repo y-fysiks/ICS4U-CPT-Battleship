@@ -1,8 +1,5 @@
 package com.battleshipics4u.game.menuClasses;
 
-import java.io.*;
-import java.util.*;
-
 public class MainGameplayMenu extends Menu {
     /**
      * The constructor for the Main gameplay menu

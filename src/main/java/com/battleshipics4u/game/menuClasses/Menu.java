@@ -1,12 +1,10 @@
 package com.battleshipics4u.game.menuClasses;
 
+import com.battleshipics4u.game.MainApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-import java.io.*;
-
-import com.battleshipics4u.game.MainApplication; // import MainApplication so we can access the MainApplication resources
-import javafx.scene.text.Font;
+import java.io.IOException;
 
 /**
  * @author Yubo Wang

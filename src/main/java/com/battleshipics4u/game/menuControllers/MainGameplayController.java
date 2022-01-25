@@ -13,25 +13,30 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Duration;
+import java.io.InputStream;
 
-import java.io.*;
-import java.util.Objects;
-
+/**
+ * @author Yubo Wang
+ * Controller for the main gameplay menu
+ */
 public class MainGameplayController {
-    public GridPane playerBoard;
-    public GridPane enemyBoard;
+    public GridPane playerBoard; // a GridPane that shows the player's board
+    public GridPane enemyBoard; // a GridPane that shows the enemy's board
     public ImageView crossHairs;
-    public AnchorPane backgroundPane;
-    public Label InfoLabelPlayer;
-    public Label InfoLabelEnemy;
-    private Pane[][] enemyPanes;
-    private Pane[][] playerPanes;
+    public AnchorPane backgroundPane; // the background
+    public Label InfoLabelPlayer; // displays info about the player's ships
+    public Label InfoLabelEnemy; // displays info about the enemy's ships
+    private Pane[][] enemyPanes; // array of panes, so we can display images onto each pane of the enemy board
+    private Pane[][] playerPanes; // array of panes, so we can display images onto each pane of the player board
     private Image fireImg;
     private Image splashImg;
     private ImageView[] enemyShipImgViews; // array to store the enemy ship ImageViews so that we can set them to visible later
 
     int fireX, fireY;
 
+    /**
+     * Initializes all the variables and sets up the scene. Called when the fxml file is loaded.
+     */
     @FXML
     public void initialize() {
         //Load the images required
@@ -175,7 +180,7 @@ public class MainGameplayController {
         }
     }
 
-    public void onFireButtonClicked(ActionEvent actionEvent) {
+    public void onFireButtonClicked(ActionEvent ignoredActionEvent) {
         if (fireX < 0 && fireY < 0) return;
         Shot shot = new Shot(fireX, fireY);
         if (MainApplication.mainGame.takePlayerShot(shot)) { // if the player's shot has hit an enemy ship
@@ -273,7 +278,7 @@ public class MainGameplayController {
         }
     }
 
-    public void generateRandom(ActionEvent actionEvent) {
+    public void generateRandom(ActionEvent ignoredActionEvent) {
         Shot randomShot = MainApplication.mainGame.generateRandomPlayerShot();
         gridClicked(randomShot.getX(), randomShot.getY());
     }

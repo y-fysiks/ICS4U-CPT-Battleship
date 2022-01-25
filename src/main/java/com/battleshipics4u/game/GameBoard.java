@@ -5,7 +5,7 @@ import com.battleshipics4u.game.ships.*;
 import java.util.*;
 
 /**
- * Daniel Bajenaru
+ * @author Daniel Bajenaru
  */
 public class GameBoard {
 

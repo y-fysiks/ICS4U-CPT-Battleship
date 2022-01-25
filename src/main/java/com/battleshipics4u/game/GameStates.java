@@ -5,7 +5,7 @@ import com.battleshipics4u.game.ships.*;
 import java.util.*;
 
 /**
- * Yubo Wang
+ * @author Yubo Wang
  * Stores the current internal state of the game, generates positions for the battleships
  * Main game class, storing core gameplay methods
  */
@@ -21,6 +21,10 @@ public class GameStates {
         enemyTurn = new EnemyTurn();
     }
 
+    /**
+     * gets whose turn it is
+     * @return playerTurn
+     */
     public boolean getTurn() {
         return playerTurn;
     }

@@ -1,21 +1,17 @@
 package com.battleshipics4u.game;
 
-import com.battleshipics4u.game.ships.Orientation;
-import com.battleshipics4u.game.ships.Ship;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Scanner;
-
-
 //import custom classes
 import com.battleshipics4u.game.menuClasses.*;
 
+/**
+ * @author Yubo Wang
+ * The Main class. loads all the different menu classes and displays them.
+ */
 public class MainApplication extends Application {
     private static Stage stage;
     public static SplashScreen splashScreen;
@@ -26,16 +22,22 @@ public class MainApplication extends Application {
     public static EndMenu endMenu;
     public static GameStates mainGame;
 
+    /**
+     * Overrides JavaFX Application default start() so we can initialize the game
+     * @param primaryStage the stage which to display everything on, is handled automatically by JavaFX. no action needed.
+     */
     @Override
     public void start(Stage primaryStage) {
         //load fonts
-        Font.loadFont(getClass().getResourceAsStream("/com/battleshipics4u/game/fonts/agency-fb-bold.ttf" ), 36.0); // loads ALL the fonts of family agency-fb-bold, not just size 36
+        // loads ALL the fonts of family agency-fb-bold, not just size 36
+        Font.loadFont(getClass().getResourceAsStream("/com/battleshipics4u/game/fonts/agency-fb-bold.ttf" ), 36.0);
 
+        //set the stage to the static variable so we can access it outside the Main class
         MainApplication.stage = primaryStage;
         stage.setTitle("Battleship");
         stage.setResizable(false);
 
-        initEverything();
+        initEverything(); // initialize everything
 
         //show the splash screen and start menu
         stage.show();
@@ -43,10 +45,19 @@ public class MainApplication extends Application {
         startMenu.showMenu();
     }
 
+    /**
+     * Sets the scene specified to the stage
+     * Used by the Menu classes to set the corresponding scene
+     * @param scene a scene to be set on the stage
+     */
     public static void setScene(Scene scene) {
         stage.setScene(scene);
     }
 
+    /**
+     * Initializes the entire game, including all the menus and the GameState
+     * Can be used to reset the game to its starting state for replay
+     */
     public static void initEverything() {
         //create GameState
         mainGame = new GameStates();

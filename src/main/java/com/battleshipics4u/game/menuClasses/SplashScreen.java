@@ -1,7 +1,8 @@
 package com.battleshipics4u.game.menuClasses;
 
-import java.io.IOException;
-
+/**
+ * @author Daniel Bejenaru
+ */
 public class SplashScreen extends Menu{
     /**
      * The constructor for the splashscreen.
