@@ -12,7 +12,7 @@
   </padding>
   <Label fx:id="winLossText" textFill="#00ff0d">
     <font>
-      <Font name="Agency FB Bold" size="64.0" />
+      <Font name="Agency FB Bold" size="72.0" />
     </font>
     <effect>
       <Glow level="0.8" />
@@ -27,13 +27,13 @@
        <Glow level="1.0" />
     </effect>
     <font>
-      <Font name="Agency FB Bold" size="16.0" />
+      <Font name="Agency FB Bold" size="24.0" />
     </font></Button>
   <Button mnemonicParsing="false" onAction="#playAgain" style="-fx-background-color: #000000; -fx-border-color: #32CD32;" text="Play Again" textFill="#00ff0d">
     <effect>
       <Glow level="1.0" />
     </effect>
     <font>
-      <Font name="Agency FB Bold" size="16.0" />
+      <Font name="Agency FB Bold" size="24.0" />
     </font></Button>
 </VBox>

@@ -26,32 +26,33 @@ public class MainGameplayController {
     public Label InfoLabelEnemy;
     private Pane[][] enemyPanes;
     private Pane[][] playerPanes;
-
     private Image fireImg;
     private Image splashImg;
+    private ImageView[] enemyShipImgViews; // array to store the enemy ship ImageViews so that we can set them to visible later
 
     int fireX, fireY;
 
     @FXML
     public void initialize() {
+        //Load the images required
         InputStream crossHairInp = getClass().getResourceAsStream("/com/battleshipics4u/game/target.png");
         if (crossHairInp == null) {
             System.out.println("Error: image not found");
             crossHairs = new ImageView();
         }
-        else crossHairs = new ImageView(new Image(crossHairInp));
+        else crossHairs = new ImageView(new Image(crossHairInp)); // directly create imageview because we only need one cross-hair
 
-        try {
-            fireImg = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/battleshipics4u/game/fire.png")));
-        } catch (NullPointerException e) {
+        InputStream fireInp = getClass().getResourceAsStream("/com/battleshipics4u/game/fire.png");
+        if (fireInp == null) {
             System.out.println("Error: image not found");
         }
+        else fireImg = new Image(fireInp); // read the image into an Image class, because we need to create multiple ImageViews
 
-        try {
-            splashImg = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/battleshipics4u/game/splash.png")));
-        } catch (NullPointerException e) {
+        InputStream splashInp = getClass().getResourceAsStream("/com/battleshipics4u/game/splash.png");
+        if (splashInp == null) {
             System.out.println("Error: image not found");
         }
+        else splashImg = new Image(splashInp); // read the image into an Image class, because we need to create multiple ImageViews
 
 
         crossHairs.setFitWidth(67.5);
@@ -109,6 +110,7 @@ public class MainGameplayController {
             imgView.setTranslateY(translateY);
         }
 
+        enemyShipImgViews = new ImageView[MainApplication.mainGame.enemy.shipList.size()]; // initialize the array
         for (Ship s : MainApplication.mainGame.enemy.shipList) {
             int x = s.getPosition(1);
             int y = s.getPosition(0);
@@ -138,6 +140,8 @@ public class MainGameplayController {
             imgView.setTranslateY(translateY);
 
             imgView.setVisible(false);
+
+            enemyShipImgViews[s.shipIdx] = imgView; // add the imageview to the array
         }
 
     }
@@ -171,49 +175,47 @@ public class MainGameplayController {
         }
     }
 
-
-    public void onFireButtonClicked(ActionEvent actionEvent) throws Exception{
+    public void onFireButtonClicked(ActionEvent actionEvent) {
         if (fireX < 0 && fireY < 0) return;
         Shot shot = new Shot(fireX, fireY);
-        if (MainApplication.mainGame.takePlayerShot(shot)) {
-            System.out.println("You hit a ship");
+        if (MainApplication.mainGame.takePlayerShot(shot)) { // if the player's shot has hit an enemy ship
             ImageView fire = new ImageView(fireImg);
             fire.setFitWidth(47.5);
             fire.setFitHeight(47.5);
-            fire.setVisible(true);
             fire.setTranslateX(10);
             fire.setTranslateY(10);
+            fire.setVisible(true);
 
             enemyPanes[fireX][fireY].getChildren().add(fire);
             enemyPanes[fireX][fireY].setStyle("");
 
-        } else {
-            System.out.println("You missed ");
+        } else { // if the player's shot has missed an enemy ship
             ImageView splash = new ImageView(splashImg);
             splash.setFitWidth(47.5);
             splash.setFitHeight(47.5);
-            splash.setVisible(true);
             splash.setTranslateX(10);
             splash.setTranslateY(10);
+            splash.setVisible(true);
 
             enemyPanes[fireX][fireY].getChildren().add(splash);
             enemyPanes[fireX][fireY].setStyle("");
         }
+        // reset the player's firing coordinates to invalid
         fireX = -1;
         fireY = -1;
         //check if any of the enemy's ships have been sunk and if the player has won
-        int lastSunkIdx = MainApplication.mainGame.enemy.getLastSunkIdx();
-        if (lastSunkIdx != -1) {
-            //ship was just sunk by last move
+        int lastSunkIdx = MainApplication.mainGame.enemy.getLastSunkIdx(); // gets the index of the last sunk ship
+        if (lastSunkIdx != -1) { //ship was just sunk by last move
             InfoLabelPlayer.setText("You sunk the enemy's " + Ship.getShipName.get(lastSunkIdx));
+            //set the sunk ship as visible
+            enemyShipImgViews[lastSunkIdx].setVisible(true);
+        } else { // nothing was sunk, so clear the info label
+            InfoLabelPlayer.setText("");
         }
         if (MainApplication.mainGame.checkPlayerWon()) {
-            try {
-                Thread.sleep(2000);
-            } catch (Exception e) {
-                System.out.println("Didn't work");
-            }
-            MainApplication.endMenu.showMenu(true);
+            PauseTransition delayAfterWin = new PauseTransition(Duration.seconds(1));//delay for 1 second after the player wins
+            delayAfterWin.setOnFinished(e -> MainApplication.endMenu.showMenu(true));
+            delayAfterWin.play();
             return;
         }
 
@@ -231,9 +233,10 @@ public class MainGameplayController {
 
     }
 
-    public void computerTurn() throws Exception{
+    public void computerTurn() {
         //let the computer take a turn
         Shot enemyShot = MainApplication.mainGame.enemyTurn.generateNextTurn(MainApplication.mainGame.player);
+        System.out.println(enemyShot.getX() + " " + enemyShot.getY());
         if (MainApplication.mainGame.takeEnemyShot(enemyShot)) {
             ImageView fire = new ImageView(fireImg);
             fire.setFitWidth(47.5);
@@ -246,8 +249,10 @@ public class MainGameplayController {
 
             int lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
             if (lastSunkIdx != -1) {
-                //ship was just sunk by last computer move ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ FOR MAKING TEXT APPEAR ONLY FOR TWO TURNS
+                //ship was just sunk by last computer move
                 InfoLabelEnemy.setText("The Enemy sunk your " + Ship.getShipName.get(lastSunkIdx));
+            } else {
+                InfoLabelEnemy.setText("");
             }
         } else {
             ImageView splash = new ImageView(splashImg);
@@ -262,12 +267,9 @@ public class MainGameplayController {
 
         if (MainApplication.mainGame.checkEnemyWon()) {
             //THIS MEANS THE ENEMY HAS SUNK ALL THE PLAYER SHIPS AND HAS WON
-            try {
-                Thread.sleep(4000);
-            } catch (Exception e) {
-                System.out.println("Didn't work");
-            }
-            MainApplication.endMenu.showMenu(false);
+            PauseTransition delayAfterWin = new PauseTransition(Duration.seconds(1));//delay for 1 seconds after the enemy wins
+            delayAfterWin.setOnFinished(e -> MainApplication.endMenu.showMenu(false));
+            delayAfterWin.play();
         }
     }
 

@@ -11,15 +11,18 @@ public class GameBoard {
 
 	public static final int DEFAULT_ROWS = 8;
 	public static final int DEFAULT_COLS = 8;
-//    public List<Shot> injuredShip = new ArrayList<>();
-	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>();
+	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>(); // stores ships that are injured for the AI
 
 	public int[][] gridStates = new int[DEFAULT_COLS][DEFAULT_ROWS];
 	// 0 means not fired upon, 1 means hit, 2 means miss
-	public ArrayList<Ship> shipList = new ArrayList<>();
+	public ArrayList<Ship> shipList = new ArrayList<>(); // arraylist for all the ships
 
-	private int lastSunkIdx = -1;
+	private int lastSunkIdx = -1; // variable for the getLastSunkIdx() function
 
+	/**
+	 * constructor for the GameBoard.
+	 * Creates all the different ships, their corresponding lengths, and adds them to the ShipList
+	 */
 	public GameBoard() {
 		Ship.getShipIdx.put("Carrier", 0);
 		Ship.getShipIdx.put("Battleship", 1);
@@ -55,7 +58,6 @@ public class GameBoard {
 	 */
 	public boolean didShotHit(Shot shot) {
 		for (Ship currentShip : shipList) {
-			boolean prevSunk = currentShip.checkSunk();
 			if (currentShip.checkHit(shot.getY(), shot.getX())) {
 				List<Shot> shots = injuredShips.get(currentShip.shipIdx);
 				if (shots != null) {
@@ -77,10 +79,18 @@ public class GameBoard {
 		return false;
 	}
 
+	/**
+	 * gets the index of the ship that was last sunk by the shot that was fired.
+	 * @return the index of the last sunk ship. returns -1 if the last shot did not sink a ship
+	 */
 	public int getLastSunkIdx() {
 		return lastSunkIdx;
 	}
 
+	/**
+	 * checks whether all the ships have been sunk
+	 * @return true if all ships on the GameBoard have been sunk, false otherwise
+	 */
 	public boolean allSunk() {
 		for (Ship s : shipList) {
 			if (!s.checkSunk())

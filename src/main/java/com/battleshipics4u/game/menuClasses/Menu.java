@@ -31,6 +31,7 @@ public abstract class Menu {
             sc = new Scene(fxmlLoader.load(), 1280, 720);
         } catch (IOException e) {
             System.out.println("FXML File not found");
+            e.printStackTrace();
         }
 
         MainApplication.setScene(sc);
