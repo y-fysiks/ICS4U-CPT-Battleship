@@ -11,9 +11,9 @@ import java.util.*;
  */
 public class GameStates {
     public GameBoard player, enemy;
-    private boolean playerTurn = true;
+    private boolean playerTurn = true; // determines whether it is the player's turn to go
     private final Random rand = new Random();
-    public final EnemyTurn enemyTurn;
+    public final EnemyTurn enemyTurn; // EnemyTurn class to generate enemy turns
 
     public GameStates() {
         player = new GameBoard();
@@ -29,6 +29,9 @@ public class GameStates {
         return playerTurn;
     }
 
+    /**
+     * Generates random enemy ship placements that do not overlap
+     */
     public void generateEnemyShipPlacements() {
         for (Ship ship : enemy.shipList) {
             boolean direction = rand.nextBoolean();
@@ -53,22 +56,39 @@ public class GameStates {
         }
     }
 
+    /**
+     * Places a ship onto the PLAYER BOARD with the specified coordinates if it is valid and returns true, otherwise it returns false
+     * @param shipIdx the index of the ship (from 0-4) that is to be placed
+     * @param row the row/Y coordinate to place the ship at
+     * @param col the column/X coordinate to place the ship at
+     * @param dir the orientation of the ship (vertical or horizontal)
+     * @return whether the operation succeeded
+     */
     public boolean placeShip(int shipIdx, int row, int col, Orientation dir) {
         Ship ship = player.shipList.get(shipIdx);
 
-        if (row < 0 || col < 0) return false;
-        if (dir == Orientation.Horizontal) {
+        if (row < 0 || col < 0) return false; // if the location is invalid, return false
+        if (dir == Orientation.Horizontal) { // if the ship is horizontal, check if it is out of bounds
             if (row >= GameBoard.DEFAULT_ROWS || col > GameBoard.DEFAULT_COLS - ship.getShipLength()) return false;
-        } else {
+        } else { // if the ship is vertical, check if it is out of bounds
             if (row > GameBoard.DEFAULT_ROWS - ship.getShipLength() || col >= GameBoard.DEFAULT_COLS) return false;
         }
-
+        // check if the ship overlaps with any previously placed ships and return false if so
         if (checkShipOverlaps(player, row, col, ship.getShipLength(), dir)) return false;
         ship.setPosition(row, col, dir);
         ship.activate();
         return true;
     }
 
+    /**
+     * checks whether the given row, column, and ship length will overlap with previously placed ships on a given gameboard.
+     * @param gb which GameBoard to check on
+     * @param row the row/Y coordinate
+     * @param col the col/X coordinate
+     * @param shipLength the length of the ship
+     * @param orientation the orientation of the ship
+     * @return whether the given ship will overlap with existing ones
+     */
     private boolean checkShipOverlaps(GameBoard gb, int row, int col, int shipLength, Orientation orientation) {
         int endRow = row, endCol = col;
         if (orientation == Orientation.Horizontal) {
@@ -92,15 +112,25 @@ public class GameStates {
         return false;
     }
 
+    /**
+     * Checks whether a new player shot has already been taken
+     * @param shotX the x coordinate of the shot
+     * @param shotY the y coordinate of the shot
+     * @return true if the player shot has not been repeated before
+     */
     public boolean checkValidPlayerShot(int shotX, int shotY) {
         return enemy.gridStates[shotX][shotY] == 0; // returns false if the location of the enemy's board has already been shot
     }
 
+    /**
+     * Generates a random player shot that is valid
+     * @return a valid randomly generated Shot
+     */
     public Shot generateRandomPlayerShot() {
         Shot s;
         do {
             s = new Shot(rand.nextInt(8), rand.nextInt(8));
-        } while (!checkValidPlayerShot(s.getX(), s.getY()));
+        } while (!checkValidPlayerShot(s.getX(), s.getY())); // keep looping while the shot is not valid
         return s;
     }
 
@@ -111,7 +141,7 @@ public class GameStates {
      * @return true for a hit, false for a miss
      */
     public boolean takePlayerShot(Shot currentShot) {
-        playerTurn = false;
+        playerTurn = false; // once the player has gone, it is no longer their turn so set playerTurn to false
         if (enemy.didShotHit(currentShot)) {
             enemy.gridStates[currentShot.getX()][currentShot.getY()] = 1;
             return true;

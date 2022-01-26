@@ -12,7 +12,8 @@ public class GameBoard {
 
 	public static final int DEFAULT_ROWS = 8;
 	public static final int DEFAULT_COLS = 8;
-	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>(); // stores ships that are injured for the AI. Linkedhashmap allows the program to remember the order of of which ship was hit first, allowing the program to prioritize finishing off the first ship it hit
+	// stores ships that are injured for the AI. LinkedHashMap allows the program to remember the order of which ship was hit first, allowing the program to prioritize finishing off the first ship it hit
+	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>();
 
 	public int[][] gridStates = new int[DEFAULT_COLS][DEFAULT_ROWS];
 	// 0 means not fired upon, 1 means hit, 2 means miss

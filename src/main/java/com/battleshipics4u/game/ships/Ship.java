@@ -1,10 +1,6 @@
 package com.battleshipics4u.game.ships;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.HashMap;
 
@@ -51,16 +47,8 @@ public class Ship {
     }
 
     /**
-     * Return Ship leftmost and topmost position
-     * @return array of x and y position
-     */
-    public int[] getPosition() {
-        return new int[]{shipRow, shipColumn};
-    }
-
-    /**
      * Gets a certain component of the position of the ship
-     * @param component which component of the
+     * @param component which component of the position to return. 0 for the row/Y, 1 for the col/X
      * @return a row or column coordinate of the ships position
      */
     public int getPosition(int component) { //component can be 0 for row, 1 for column

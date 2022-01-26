@@ -35,6 +35,7 @@ public class PlayerBoardSetController {
     public void initialize() {
         placeShipsMessage.setVisible(false); // hide the message until it is needed
 
+        //creates and adds a pane to each location on the board so that we can set the ActionEvents
         panes = new Pane[Board.getColumnCount()][Board.getRowCount()];
         for (int i = 0; i < Board.getColumnCount(); i++) {
             for (int j = 0; j < Board.getRowCount(); j++) {
@@ -42,29 +43,30 @@ public class PlayerBoardSetController {
                 Board.add(cell, i, j);
                 int finalI = i;
                 int finalJ = j;
+                // set the Event using a lambda
                 cell.setOnMousePressed(e -> {
-                    if (e.isPrimaryButtonDown()) {
+                    if (e.isPrimaryButtonDown()) { // if the primary mouse button is clicked, place the ship.
                         gridClicked(finalI, finalJ);
-                    } else {
+                    } else { // otherwise, the user has right-clicked, so rotate the ship
                         rightClick(e);
                     }
                 });
                 panes[i][j] = cell;
             }
         }
-        int i = 0;
+        // add the Ship images to the list GridPane
         for (Ship s : MainApplication.mainGame.player.shipList) {
+            int i = s.shipIdx;
             images[i] = new ImageView(s.img);
             images[i].setFitHeight(s.getPixelsLength());
             images[i].setFitWidth(s.getPixelsWidth());
             images[i].setTranslateX(shipList.getPrefWidth() / 2);
             images[i].setRotate(-90);
             shipList.add(images[i], 0, i);
-            int finalI = i;//weird Java quirk, variable must be local to use inside lambda
-            images[i].setOnMouseClicked(e -> {
-                if (moveShipId == -1) {
+            images[i].setOnMouseClicked(e -> { // set the Event when a user clicks a ship using a lambda
+                if (moveShipId == -1) { // if no other ships are being moved, then make it follow the mouse.
                     s.activate();
-                    moveShipId = finalI;
+                    moveShipId = i;
                     ImageView targetImg = images[moveShipId];
                     targetImg.setMouseTransparent(true);
                     shipList.getChildren().remove(targetImg);
@@ -74,8 +76,6 @@ public class PlayerBoardSetController {
                     move(e);
                 }
             });
-            i++;
-
         }
     }
 
@@ -182,12 +182,9 @@ public class PlayerBoardSetController {
         for (Ship s : MainApplication.mainGame.player.shipList) {
             if (s.getActivation()) {
                 s.deactivate();
-                if (s.getPosition(1) > 0 && s.getPosition(0) > 0) {
-                    //item was already placed on board
+                if (s.getPosition(1) > 0 && s.getPosition(0) > 0) { // if item was already placed on board
+                    // remove the image from the board so we can move it back to original GridPane
                     panes[s.getPosition(1)][s.getPosition(0)].getChildren().remove(images[i]);
-                } else {
-                    //item is being held with mouse from user, position is still at default -10, -10
-                    backgroundPane.getChildren().remove(images[i]);
                 }
 
                 s.setPosition(-10, -10, Orientation.Vertical);
@@ -195,11 +192,11 @@ public class PlayerBoardSetController {
                 images[i].setTranslateY(0);
                 images[i].setLayoutX(0);
                 images[i].setLayoutY(0);
-
                 images[i].setRotate(-90);
-
+                //add the ship back into the ship list GridPane
                 shipList.add(images[i], 0, i);
 
+                // allow the image to be clickable again
                 images[i].setMouseTransparent(false);
             }
             i++;

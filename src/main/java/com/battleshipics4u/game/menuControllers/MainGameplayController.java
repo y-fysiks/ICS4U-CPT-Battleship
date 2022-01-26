@@ -151,6 +151,11 @@ public class MainGameplayController {
 
     }
 
+    /**
+     * Call when the grid is left-clicked. it places the cross-hairs at the clicked location
+     * @param x the x coordinate that was clicked
+     * @param y the y coordinate that was clicked
+     */
     private void gridClicked(int x, int y) {
         if (!MainApplication.mainGame.getTurn()) return;
         if (MainApplication.mainGame.checkValidPlayerShot(x, y)) {
@@ -165,11 +170,16 @@ public class MainGameplayController {
         }
     }
 
+    /**
+     * automatically called when the mouse is moved. makes the targeting cross-hair move with the mouse
+     * @param mouseEvent the MouseEvent associated with the moving mouse
+     */
     public void move(MouseEvent mouseEvent) {
-        if (!MainApplication.mainGame.getTurn()) return;
+        if (!MainApplication.mainGame.getTurn()) return; // only show the cross-hair when it's the player's turn
         double x = mouseEvent.getSceneX();
         double y = mouseEvent.getSceneY();
 
+        // only show the cross-hair when the user moves the mouse inside the shooting area
         if (x >= enemyBoard.getLayoutX() && x <= enemyBoard.getLayoutX() + enemyBoard.getPrefWidth() &&
                 y >= enemyBoard.getLayoutY() && y <= enemyBoard.getLayoutY() + enemyBoard.getPrefHeight()) {
             crossHairs.setVisible(true);
@@ -180,6 +190,11 @@ public class MainGameplayController {
         }
     }
 
+    /**
+     * Called when the fire button is clicked, fires the shot and makes the computer take a turn.
+     * Also checks if the player/computer has won and terminates the game to the ending screen if so.
+     * @param ignoredActionEvent not used but is necessary to not throw an error
+     */
     public void onFireButtonClicked(ActionEvent ignoredActionEvent) {
         if (fireX < 0 && fireY < 0) return;
         Shot shot = new Shot(fireX, fireY);
@@ -238,11 +253,16 @@ public class MainGameplayController {
 
     }
 
+    /**
+     * Takes the computer's turn and checks if the computer has won.
+     * If so, it terminates the game and shows the ending screen.
+     */
     public void computerTurn() {
         //let the computer take a turn
         Shot enemyShot = MainApplication.mainGame.enemyTurn.generateNextTurn(MainApplication.mainGame.player);
         System.out.println(enemyShot.getX() + " " + enemyShot.getY());
-        if (MainApplication.mainGame.takeEnemyShot(enemyShot)) {
+        if (MainApplication.mainGame.takeEnemyShot(enemyShot)) { // if the shot hit, make it show fire
+            //show the image
             ImageView fire = new ImageView(fireImg);
             fire.setFitWidth(47.5);
             fire.setFitHeight(47.5);
@@ -252,14 +272,15 @@ public class MainGameplayController {
 
             playerPanes[enemyShot.getX()][enemyShot.getY()].getChildren().add(fire);
 
+            //get the index of the last sunk ship
             int lastSunkIdx = MainApplication.mainGame.player.getLastSunkIdx();
-            if (lastSunkIdx != -1) {
+            if (lastSunkIdx != -1) { // if it is valid
                 //ship was just sunk by last computer move
                 InfoLabelEnemy.setText("The Enemy sunk your " + Ship.getShipName.get(lastSunkIdx));
-            } else {
+            } else { // nothing was sunk, so clear the info label
                 InfoLabelEnemy.setText("");
             }
-        } else {
+        } else { // shot has missed, so show splash
             ImageView splash = new ImageView(splashImg);
             splash.setFitWidth(47.5);
             splash.setFitHeight(47.5);
@@ -272,12 +293,17 @@ public class MainGameplayController {
 
         if (MainApplication.mainGame.checkEnemyWon()) {
             //THIS MEANS THE ENEMY HAS SUNK ALL THE PLAYER SHIPS AND HAS WON
-            PauseTransition delayAfterWin = new PauseTransition(Duration.seconds(1));//delay for 1 seconds after the enemy wins
-            delayAfterWin.setOnFinished(e -> MainApplication.endMenu.showMenu(false));
+            PauseTransition delayAfterWin = new PauseTransition(Duration.seconds(1));//delays for 1 second after the enemy wins
+            delayAfterWin.setOnFinished(e -> MainApplication.endMenu.showMenu(false)); // set the ending scene after the delay
             delayAfterWin.play();
         }
     }
 
+    /**
+     * Generates a random location and selects it on the screen.
+     * Automatically called when the user clicks the "random" button
+     * @param ignoredActionEvent not used but is necessary to not throw an error
+     */
     public void generateRandom(ActionEvent ignoredActionEvent) {
         Shot randomShot = MainApplication.mainGame.generateRandomPlayerShot();
         gridClicked(randomShot.getX(), randomShot.getY());
