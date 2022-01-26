@@ -1,6 +1,8 @@
 package com.battleshipics4u.game.menuClasses;
 
-
+/**
+ * The instruction menu
+ */
 public class InstructionMenu extends Menu{
 
     /**

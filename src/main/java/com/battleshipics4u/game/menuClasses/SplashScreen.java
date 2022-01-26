@@ -2,6 +2,7 @@ package com.battleshipics4u.game.menuClasses;
 
 /**
  * @author Daniel Bejenaru
+ * Splash screen class
  */
 public class SplashScreen extends Menu{
     /**
@@ -11,11 +12,14 @@ public class SplashScreen extends Menu{
         super("splash-screen.fxml");
     }
 
+    /**
+     * Displays the splash screen for 3 seconds
+     */
     @Override
     public void showMenu() {
         super.showMenu();
         try {
-            Thread.sleep(3000); //pauses the tread for 5 seconds, to show the splash screen
+            Thread.sleep(3000); //pauses the tread for 3 seconds to show the splash screen
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

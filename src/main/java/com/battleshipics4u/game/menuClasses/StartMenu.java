@@ -1,5 +1,8 @@
 package com.battleshipics4u.game.menuClasses;
 
+/**
+ * Start screen menu class
+ */
 public class StartMenu extends Menu {
 
     /**

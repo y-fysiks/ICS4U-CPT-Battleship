@@ -21,18 +21,17 @@ public abstract class Menu {
     public Menu(String fxmlPath) {
         fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxmlPath));
     }
+
     /**
      * This method will be called by the subclasses to display the menu by switching the scene to the menu's scene.
      */
     public void showMenu() {
-        try {
+        try { //creates a 720p scene
             sc = new Scene(fxmlLoader.load(), 1280, 720);
         } catch (IOException e) {
             System.out.println("FXML File not found");
             e.printStackTrace();
         }
-
         MainApplication.setScene(sc);
     }
-
 }

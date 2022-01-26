@@ -157,7 +157,7 @@ public class MainGameplayController {
      * @param y the y coordinate that was clicked
      */
     private void gridClicked(int x, int y) {
-        if (!MainApplication.mainGame.getTurn()) return;
+        if (!MainApplication.mainGame.getTurn()) return; // if not the player turn then they can't click the grid
         if (MainApplication.mainGame.checkValidPlayerShot(x, y)) {
             fireX = x;
             fireY = y;
@@ -166,7 +166,7 @@ public class MainGameplayController {
                     enemyPanes[i][j].setStyle("");
                 }
             }
-            enemyPanes[x][y].setStyle("-fx-background-color: #FF4B00");
+            enemyPanes[x][y].setStyle("-fx-background-color: #FF4B00"); // sets the square clicked orange
         }
     }
 
@@ -197,9 +197,9 @@ public class MainGameplayController {
      */
     public void onFireButtonClicked(ActionEvent ignoredActionEvent) {
         if (fireX < 0 && fireY < 0) return;
-        Shot shot = new Shot(fireX, fireY);
+        Shot shot = new Shot(fireX, fireY); //creates a new shot
         if (MainApplication.mainGame.takePlayerShot(shot)) { // if the player's shot has hit an enemy ship
-            ImageView fire = new ImageView(fireImg);
+            ImageView fire = new ImageView(fireImg); //displays the fire image where the player shot
             fire.setFitWidth(47.5);
             fire.setFitHeight(47.5);
             fire.setTranslateX(10);
@@ -210,7 +210,7 @@ public class MainGameplayController {
             enemyPanes[fireX][fireY].setStyle("");
 
         } else { // if the player's shot has missed an enemy ship
-            ImageView splash = new ImageView(splashImg);
+            ImageView splash = new ImageView(splashImg); //displays the splash image where the player shot
             splash.setFitWidth(47.5);
             splash.setFitHeight(47.5);
             splash.setTranslateX(10);
@@ -240,7 +240,7 @@ public class MainGameplayController {
         }
 
         //make a delay for a few seconds
-        PauseTransition delayAfterPlayerTurn = new PauseTransition(Duration.seconds(0.6));//delay for 0.6 seconds after the player goes, and then let the computer go
+        PauseTransition delayAfterPlayerTurn = new PauseTransition(Duration.seconds(0.5));//delay for 0.5 seconds after the player goes, and then let the computer go
         delayAfterPlayerTurn.setOnFinished(e -> {
             try {
                 computerTurn();
@@ -249,8 +249,6 @@ public class MainGameplayController {
             }
         });
         delayAfterPlayerTurn.play();
-
-
     }
 
     /**
@@ -261,9 +259,8 @@ public class MainGameplayController {
         //let the computer take a turn
         Shot enemyShot = MainApplication.mainGame.enemyTurn.generateNextTurn(MainApplication.mainGame.player);
         System.out.println(enemyShot.getX() + " " + enemyShot.getY());
-        if (MainApplication.mainGame.takeEnemyShot(enemyShot)) { // if the shot hit, make it show fire
-            //show the image
-            ImageView fire = new ImageView(fireImg);
+        if (MainApplication.mainGame.takeEnemyShot(enemyShot)) { //if computer hit
+            ImageView fire = new ImageView(fireImg); //displays the fire image where the computer shot
             fire.setFitWidth(47.5);
             fire.setFitHeight(47.5);
             fire.setVisible(true);
@@ -280,8 +277,8 @@ public class MainGameplayController {
             } else { // nothing was sunk, so clear the info label
                 InfoLabelEnemy.setText("");
             }
-        } else { // shot has missed, so show splash
-            ImageView splash = new ImageView(splashImg);
+        } else { //missed
+            ImageView splash = new ImageView(splashImg); //displays the splash image where the computer shot
             splash.setFitWidth(47.5);
             splash.setFitHeight(47.5);
             splash.setVisible(true);

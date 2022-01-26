@@ -1,5 +1,8 @@
 package com.battleshipics4u.game.menuClasses;
 
+/**
+ * The game over screen menu
+ */
 public class EndMenu extends Menu {
     private boolean playerWon;
 

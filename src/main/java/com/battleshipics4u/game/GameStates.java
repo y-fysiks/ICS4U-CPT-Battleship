@@ -15,6 +15,10 @@ public class GameStates {
     private final Random rand = new Random();
     public final EnemyTurn enemyTurn; // EnemyTurn class to generate enemy turns
 
+    /**
+     * Constructor for GameStates
+     * creates both GameBoards and the EnemyTurn
+     */
     public GameStates() {
         player = new GameBoard();
         enemy = new GameBoard();
@@ -34,17 +38,15 @@ public class GameStates {
      */
     public void generateEnemyShipPlacements() {
         for (Ship ship : enemy.shipList) {
-            boolean direction = rand.nextBoolean();
-            if (direction) {
-                //vertical case
+            boolean direction = rand.nextBoolean(); //random orientation
+            if (direction) { //vertical case
                 int row, col;
                 do {
                     row = rand.nextInt(GameBoard.DEFAULT_ROWS - ship.getShipLength());
                     col = rand.nextInt(GameBoard.DEFAULT_ROWS);
                 } while (checkShipOverlaps(enemy, row, col, ship.getShipLength(), Orientation.Vertical));
                 ship.setPosition(row, col, Orientation.Vertical);
-            } else {
-                //horizontal case
+            } else { //horizontal case
                 int row, col;
                 do {
                     row = rand.nextInt(GameBoard.DEFAULT_ROWS);
@@ -57,12 +59,12 @@ public class GameStates {
     }
 
     /**
-     * Places a ship onto the PLAYER BOARD with the specified coordinates if it is valid and returns true, otherwise it returns false
-     * @param shipIdx the index of the ship (from 0-4) that is to be placed
-     * @param row the row/Y coordinate to place the ship at
-     * @param col the column/X coordinate to place the ship at
-     * @param dir the orientation of the ship (vertical or horizontal)
-     * @return whether the operation succeeded
+     * Stores the ship location on the player board when player sets up their board
+     * @param shipIdx index of the ship just placed
+     * @param row the row of the ship
+     * @param col the column of the ship
+     * @param dir the orientation of the ship
+     * @return if the ship can be placed where player wants return true. If illegal placement, return false
      */
     public boolean placeShip(int shipIdx, int row, int col, Orientation dir) {
         Ship ship = player.shipList.get(shipIdx);
@@ -81,13 +83,13 @@ public class GameStates {
     }
 
     /**
-     * checks whether the given row, column, and ship length will overlap with previously placed ships on a given gameboard.
-     * @param gb which GameBoard to check on
-     * @param row the row/Y coordinate
-     * @param col the col/X coordinate
-     * @param shipLength the length of the ship
-     * @param orientation the orientation of the ship
-     * @return whether the given ship will overlap with existing ones
+     * Checks if the ship trying to be placed overlaps another ship
+     * @param gb which gameBoard to check the ships, enemy or player
+     * @param row the row of the ship being tested
+     * @param col the column of the ship being tested
+     * @param shipLength length of the ship being tested
+     * @param orientation the orientation of the ship being tested
+     * @return if the ship overlaps another ship return true. If not then return false
      */
     private boolean checkShipOverlaps(GameBoard gb, int row, int col, int shipLength, Orientation orientation) {
         int endRow = row, endCol = col;
@@ -128,9 +130,9 @@ public class GameStates {
      */
     public Shot generateRandomPlayerShot() {
         Shot s;
-        do {
+        do { // loops until a valid shot is generated
             s = new Shot(rand.nextInt(8), rand.nextInt(8));
-        } while (!checkValidPlayerShot(s.getX(), s.getY())); // keep looping while the shot is not valid
+        } while (!checkValidPlayerShot(s.getX(), s.getY()));
         return s;
     }
 

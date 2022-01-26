@@ -54,7 +54,7 @@ public class PlayerBoardSetController {
                 panes[i][j] = cell;
             }
         }
-        // add the Ship images to the list GridPane
+        // displays the ships
         for (Ship s : MainApplication.mainGame.player.shipList) {
             int i = s.shipIdx;
             images[i] = new ImageView(s.img);

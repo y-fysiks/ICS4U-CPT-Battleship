@@ -119,7 +119,11 @@ public class EnemyTurn {
 		return newShot; //returns the valid shot
 	}
 
-	//gets the minimum y value
+	/**
+	 * Gets the minimum y value
+	 * @param list list of shots
+	 * @return min
+	 */
 	public int getYMin(List<Shot> list) {
 		int min = Integer.MAX_VALUE;
 		for (Shot s : list) {
@@ -127,7 +131,12 @@ public class EnemyTurn {
 		}
 		return min;
 	}
-	//gets the maximum y value
+
+	/**
+	 * Gets the maximum y value
+	 * @param list list of shots
+	 * @return max
+	 */
 	public int getYMax(List<Shot> list) {
 		int max = Integer.MIN_VALUE;
 		for (Shot s : list) {
@@ -135,7 +144,12 @@ public class EnemyTurn {
 		}
 		return max;
 	}
-	//gets the minimum x value
+
+	/**
+	 * Gets the minimum x value
+	 * @param list list of shots
+	 * @return min
+	 */
 	public int getXMin(List<Shot> list) {
 		int min = Integer.MAX_VALUE;
 		for (Shot s : list) {
@@ -143,7 +157,12 @@ public class EnemyTurn {
 		}
 		return min;
 	}
-	//gets the maximum x value
+
+	/**
+	 * Gets the minimum x value
+	 * @param list list of shots
+	 * @return max
+	 */
 	public int getXMax(List<Shot> list) {
 		int max = Integer.MIN_VALUE;
 		for (Shot s : list) {
@@ -151,18 +170,4 @@ public class EnemyTurn {
 		}
 		return max;
 	}
-
-	/*
-	//Testing
-	public static void main(String[] args) {
-		EnemyTurns enemyTurns = new EnemyTurns();
-		GameBoard gameBoard = new GameBoard();
-		List<Shot> injuredShip = new ArrayList<Shot>();
-		injuredShip.add(new Shot(3, 4));
-		injuredShip.add(new Shot(4, 4));
-		gameBoard.injuredShip = injuredShip;
-		Shot shot = enemyTurns.generateNextTurn(gameBoard);
-		System.out.println("Shot = " + shot.getX() + " / " + shot.getY());
-	}
-	*/
 }

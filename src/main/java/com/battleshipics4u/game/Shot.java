@@ -23,24 +23,20 @@ public class Shot {
 		this.y = y;
 	}
 
-	//Getter for x coordinate
+	/**
+	 * Getter for the x coordinate
+	 * @return Shot.x
+	 */
 	public int getX() {
 		return x;
 	}
 
-	//Setter for y coordinate
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	//Getter for y coordinate
+	/**
+	 * Getter for the y coordinate
+	 * @return Shot.y
+	 */
 	public int getY() {
 		return y;
-	}
-
-	//Setter for y coordinate
-	public void setY(int y) {
-		this.y = y;
 	}
 
 	/**
