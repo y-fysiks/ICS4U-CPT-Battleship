@@ -4,9 +4,9 @@ import javafx.event.ActionEvent;
 import com.battleshipics4u.game.MainApplication;
 
 /**
+ * @author Sami
  * Instruction controller class
  * Holds all methods related to that screen
- * @author Sami
  */
 public class InstructionsController {
 
