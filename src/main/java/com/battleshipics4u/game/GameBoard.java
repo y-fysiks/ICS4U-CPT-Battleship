@@ -9,7 +9,6 @@ import java.util.*;
  * @author Daniel Gordon
  */
 public class GameBoard {
-
 	public static final int DEFAULT_ROWS = 8;
 	public static final int DEFAULT_COLS = 8;
 	public Map<Integer, List<Shot>> injuredShips = new LinkedHashMap<>(); // stores ships that are injured for the AI. Linkedhashmap allows the program to remember the order of of which ship was hit first, allowing the program to prioritize finishing off the first ship it hit
@@ -53,7 +52,6 @@ public class GameBoard {
 
 	/**
 	 * Checks if a shot hit a ship on the given gameBoard
-	 * 
 	 * @param shot the shot object
 	 * @return true if shot did hit, false if missed
 	 */

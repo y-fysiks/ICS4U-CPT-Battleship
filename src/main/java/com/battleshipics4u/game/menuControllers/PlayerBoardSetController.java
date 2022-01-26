@@ -17,7 +17,6 @@ import javafx.scene.layout.Pane;
  * Controller for the player board setting process.
  */
 public class PlayerBoardSetController {
-
     public GridPane Board;
     public GridPane shipList;
     public AnchorPane backgroundPane;
@@ -53,7 +52,7 @@ public class PlayerBoardSetController {
             }
         }
         int i = 0;
-        for (Ship s : MainApplication.mainGame.player.shipList) {
+        for (Ship s : MainApplication.mainGame.player.shipList) { //displays the ships
             images[i] = new ImageView(s.img);
             images[i].setFitHeight(s.getPixelsLength());
             images[i].setFitWidth(s.getPixelsWidth());
